@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { DM_Sans, Geist, Geist_Mono, Roboto_Slab } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/site/navbar";
 
 const robotoSlabHeading = Roboto_Slab({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem
           disableTransitionOnChange
         >
+          <Navbar />
           {children}
         </ThemeProvider>
       </body>
