@@ -66,8 +66,8 @@ const BentoGrid = () => {
               Mechanics on paper
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Handwritten proofs with detailed explanations from first principles — the long threads, shown
-              one step at a time.
+              Handwritten proofs with detailed explanations from first
+              principles — the long threads, shown one step at a time.
             </p>
           </div>
         </Link>
