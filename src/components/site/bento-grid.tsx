@@ -26,24 +26,24 @@ const BentoGrid = () => {
             About
           </p>
           <div className="mt-8 flex flex-wrap gap-2 lg:mt-auto lg:pt-10">
-            <h2 className="mt-3 text-xl font-semibold tracking-tight sm:text-2xl bg-linear-to-r from-foreground to-foreground/70 bg-clip-text">
-              Hey! It&apos;s me Hritujeet
+            <h2 className="mt-3 text-xl md:text-2xl xl:text-3xl font-semibold tracking-tight sm:text-2xl bg-linear-to-r from-foreground to-foreground/70 bg-clip-text">
+              Hi, I'm Hritujeet
             </h2>
-            <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted-foreground">
+            <p className="mt-4 text-sm md:text-base max-w-xl leading-relaxed text-muted-foreground">
               They say physics and computer science are different worlds. I say,
               why not bring them together? Won&apos;t it be amazing? That&apos;s
-              what I do, and that&apos;s who I am. A teen from India who&apos;s
-              passionate about physics, with a long experience with computer
-              science.
+              what I do, and that&apos;s who I am.
             </p>
-            {["physics", "computer science", "India"].map((tag) => (
-              <span
-                key={tag}
-                className="rounded-md border border-border/80 bg-muted/30 px-2.5 py-1 font-mono text-[11px] text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
-              >
-                {tag}
-              </span>
-            ))}
+            <div className="flex items-center gap-1 my-1">
+              {["physics", "computer science", "India"].map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-md border border-border/80 bg-muted/30 px-2.5 py-1 font-mono text-[11px] text-muted-foreground transition-colors hover:border-primary/40 hover:text-foreground"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </article>
 

@@ -6,6 +6,13 @@ export default function Home() {
     <>
       <Hero />
       <BentoGrid />
+      {/* Simulations */}
+      {/* Physics based section text*/}
+      {/* Derivations */}
+      {/* CS Based Section - text */}
+      {/* Projects */}
+      {/* Blogs */}
+      {/* CTA */}
     </>
   );
 }
