@@ -20,7 +20,7 @@ const BentoGrid = () => {
       <div className="mt-10 grid grid-cols-1 gap-3 lg:grid-cols-5">
         {/* About card */}
         <article
-          className={`${card} hover:border-accent-foreground/25 duration-300 hover:-translate-y-0.5 flex flex-col lg:col-span-3 lg:row-span-3 bg-card/25 group`}
+          className={`${card} hover:border-primary/50 duration-300 hover:-translate-y-0.5 flex flex-col lg:col-span-3 lg:row-span-3 bg-card/25 group`}
         >
           <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
             About

@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { useState } from "react"
-import { ModeToggle } from "./theme-toggle"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { ModeToggle } from "./theme-toggle";
 
 const links = [
   { href: "/tech", label: "tech" },
-  { href: "/simulations", label: "simulations" },
-  { href: "/derivations", label: "derivations", flagship: true },
+  { href: "/simulations", label: "simulations", flagship: true },
+  { href: "/derivations", label: "derivations" },
   { href: "/blog", label: "blog" },
   { href: "/josephine", label: "josephine", flagship: true },
-]
+];
 
 const Navbar = () => {
-  const pathname = usePathname()
-  const [open, setOpen] = useState(false)
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   return (
     <header className="sticky my-2 inset-x-0 top-5 z-50 flex justify-center px-4">
@@ -28,19 +28,19 @@ const Navbar = () => {
           {/* top refraction highlight */}
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-white/40 to-transparent"
+            className="pointer-events-none absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent"
           />
 
           <Link
             href="/"
             className="mr-3 shrink-0 font-mono text-[15px] tracking-tight text-foreground"
           >
-            invariant<span className="text-amber-500">_</span>
+            invariant<span className="text-teal-500">_</span>
           </Link>
 
           <ul className="hidden items-center gap-0.5 font-mono text-[13px] md:flex">
             {links.map((l) => {
-              const active = pathname === l.href
+              const active = pathname === l.href;
               return (
                 <li key={l.href}>
                   <Link
@@ -55,12 +55,12 @@ const Navbar = () => {
                     {l.flagship && (
                       <span
                         aria-hidden
-                        className="h-1 w-1 rounded-full bg-amber-500"
+                        className="h-1 w-1 rounded-full bg-teal-500"
                       />
                     )}
                   </Link>
                 </li>
-              )
+              );
             })}
           </ul>
 
@@ -97,7 +97,7 @@ const Navbar = () => {
           <div className="absolute left-1/2 top-full mt-2 w-64 -translate-x-1/2 rounded-2xl border border-foreground/10 bg-background/80 p-2 shadow-lg backdrop-blur-xl md:hidden">
             <ul className="flex flex-col font-mono text-sm">
               {links.map((l) => {
-                const active = pathname === l.href
+                const active = pathname === l.href;
                 return (
                   <li key={l.href}>
                     <Link
@@ -111,18 +111,18 @@ const Navbar = () => {
                     >
                       {l.label}
                       {l.flagship && (
-                        <span className="h-1 w-1 rounded-full bg-amber-500" />
+                        <span className="h-1 w-1 rounded-full bg-teal-500" />
                       )}
                     </Link>
                   </li>
-                )
+                );
               })}
             </ul>
           </div>
         )}
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

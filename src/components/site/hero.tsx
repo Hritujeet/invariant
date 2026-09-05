@@ -45,17 +45,17 @@ export default function Hero() {
 
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
+              href="/simulations"
+              className={`px-4 py-4 ${buttonVariants({variant: "default"})}`}
+            >
+              <span>Interactive Simulations</span>
+            </Link>
+            <Link
               href="/derivations"
               className={`px-4 py-4 ${buttonVariants({variant: "outline"})}`}
             >
               <span>Explore /derivations</span>
               <ArrowUpRight className="h-4 w-4 text-zinc-400" />
-            </Link>
-            <Link
-              href="/simulations"
-              className={`px-4 py-4 ${buttonVariants({variant: "outline"})}`}
-            >
-              <span>Interactive Simulations</span>
             </Link>
             <Link
               href="/tech"
