@@ -10,10 +10,10 @@ export default function Hero() {
       <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
         {/* Hero Content */}
         <div className="flex flex-col lg:col-span-7">
-          <div className="mb-6 flex items-center gap-2 font-mono text-xs text-zinc-500">
+          <div className="mb-6 flex items-center gap-2 font-mono text-xs text-muted-foreground">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-foreground/60 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-foreground" />
             </span>
             <span className="tracking-widest uppercase">
               home // invariant.dev
@@ -24,7 +24,7 @@ export default function Hero() {
             Mechanics on paper. Software that ships.
           </h1>
 
-          <p className="mt-6 text-base leading-relaxed text-zinc-400 sm:text-lg">
+          <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
             I derive classical mechanics in a notebook, then I run the same
             system as a simulation. I also build web apps. That&apos;s most of
             what I do.
@@ -42,7 +42,7 @@ export default function Hero() {
               className={`px-4 py-4 ${buttonVariants({ variant: "outline" })}`}
             >
               <span>Explore /derivations</span>
-              <ArrowUpRight className="h-4 w-4 text-zinc-400" />
+              <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
             </Link>
             <Link
               href="/tech"

@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 const SimulationsCard = () => {
   return (
-    <Card className="group relative flex flex-col overflow-hidden transition-all duration-300 hover:border-primary/50">
+    <Card className="group relative flex flex-col overflow-hidden transition-all duration-300 hover:border-primary/50 hover:-translate-y-1">
       <Link href="/simulations" className="flex flex-col h-full">
         <CardHeader className="p-0">
           <div className="relative aspect-16/10 w-full overflow-hidden bg-muted">
