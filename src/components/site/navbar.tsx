@@ -35,7 +35,7 @@ const Navbar = () => {
             href="/"
             className="mr-3 shrink-0 font-mono text-[15px] tracking-tight text-foreground"
           >
-            invariant<span className="text-teal-500">_</span>
+            invariant<span className="text-yellow-500">_</span>
           </Link>
 
           <ul className="hidden items-center gap-0.5 font-mono text-[13px] md:flex">
@@ -55,7 +55,7 @@ const Navbar = () => {
                     {l.flagship && (
                       <span
                         aria-hidden
-                        className="h-1 w-1 rounded-full bg-teal-500"
+                        className="h-1 w-1 rounded-full bg-yellow-500"
                       />
                     )}
                   </Link>
@@ -111,7 +111,7 @@ const Navbar = () => {
                     >
                       {l.label}
                       {l.flagship && (
-                        <span className="h-1 w-1 rounded-full bg-teal-500" />
+                        <span className="h-1 w-1 rounded-full bg-yellow-500" />
                       )}
                     </Link>
                   </li>

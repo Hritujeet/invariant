@@ -6,7 +6,7 @@ import { buttonVariants } from "../ui/button";
 
 export default function Hero() {
   return (
-    <section className="relative mx-auto max-w-6xl px-4 py-12 md:py-20 h-screen flex flex-col justify-center">
+    <section className="relative mx-auto max-w-6xl h-screen flex flex-col justify-center">
       <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
         {/* Hero Content */}
         <div className="flex flex-col lg:col-span-7">
@@ -20,7 +20,7 @@ export default function Hero() {
             </span>
           </div>
 
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-100 sm:text-5xl">
+          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
             Mechanics on paper. Software that ships.
           </h1>
 

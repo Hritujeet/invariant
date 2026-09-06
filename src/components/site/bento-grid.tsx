@@ -8,7 +8,7 @@ const BentoGrid = () => {
   return (
     <section className="relative mx-auto max-w-6xl px-4 py-8 md:py-12">
       <div className="quote mx-auto flex max-w-5xl flex-col gap-1 md:px-8">
-        <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold leading-tight tracking-tight">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-12 text-transparent bg-clip-text bg-linear-to-r from-foreground to-zinc-600 tracking-tight">
           The universe is a computer, but it&apos;s not a computer made of
           silicon, it&apos;s a computer made of the laws of physics.
         </h1>

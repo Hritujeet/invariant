@@ -7,7 +7,7 @@ const SimulationsCard = () => {
   return (
     <Link
       href="/simulations"
-      className="group relative flex flex-col overflow-hidden rounded-xl border border-accent/50 bg-accent/25 text-zinc-100 ring-1 ring-white/5 transition-colors hover:border-accent"
+      className="group relative flex flex-col overflow-hidden rounded-xl border border-accent/50 bg-accent/25 ring-1 ring-white/5 transition-colors hover:border-accent"
     >
       <div className="relative aspect-16/10 overflow-hidden">
         <Image
@@ -47,7 +47,7 @@ const SimulationsCard = () => {
 
         <div className="mt-auto flex items-center justify-between border-t border-white/10 pt-3 font-mono text-[11px] text-zinc-500">
           <span>2-body · 1 constraint</span>
-          <span className="inline-flex items-center gap-1 text-zinc-300 transition-colors group-hover:text-teal-400">
+          <span className="inline-flex items-center gap-1 text-zinc-500 transition-colors group-hover:text-teal-400">
             Run
             <ArrowUpRight className="size-3.5" />
           </span>
