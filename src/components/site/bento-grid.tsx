@@ -20,12 +20,41 @@ const BentoGrid = () => {
       <div className="mt-10 grid grid-cols-1 gap-3 lg:grid-cols-5">
         {/* About card */}
         <article
-          className={`${card} hover:border-primary/50 duration-300 hover:-translate-y-0.5 flex flex-col lg:col-span-3 lg:row-span-3 bg-card/25 group`}
+          className={`${card} hover:border-primary/50 duration-300 hover:-translate-y-0.5 flex flex-col justify-between lg:col-span-3 lg:row-span-3 bg-card/25 group h-full min-h-90`}
         >
-          <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
-            About
-          </p>
-          <div className="mt-8 flex flex-col gap-3 lg:mt-auto lg:pt-10">
+          <div className="flex items-start justify-between">
+            <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
+              About
+            </p>
+
+            <div className="flex items-center gap-1.5 rounded-full border border-border/80 bg-muted/40 px-2.5 py-0.5 font-mono text-[10px] text-muted-foreground">
+              <span>&pi; = 3.1415926</span>
+            </div>
+          </div>
+
+          <div className="relative my-4 flex min-h-60 h-full w-full items-center justify-center overflow-hidden rounded-lg border border-border/40 bg-muted/10 p-4 transition-colors group-hover:border-primary/20">
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,var(--color-primary-foreground)_0%,transparent_70%)] opacity-5" />
+            <svg
+              className="absolute inset-0 h-full w-full stroke-muted-foreground/50"
+              width="100%"
+              height="100%"
+              fill="none"
+            >
+              <defs>
+                <pattern
+                  id="bento-grid-pattern"
+                  width="24"
+                  height="24"
+                  patternUnits="userSpaceOnUse"
+                >
+                  <path d="M 24 0 L 0 0 0 24" fill="none" strokeWidth="0.5" />
+                </pattern>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#bento-grid-pattern)" />
+            </svg>
+          </div>
+
+          <div className="flex flex-col gap-3">
             <h2 className="text-2xl font-semibold tracking-tight md:text-3xl xl:text-4xl">
               Hi. I am Hritujeet Sharma.
             </h2>

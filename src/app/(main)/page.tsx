@@ -7,16 +7,16 @@ import TechSection from "@/components/site/tech-section";
 
 export default function Home() {
   return (
-    <>
+    <section className="flex flex-col gap-12">
       <Hero />
       <BentoGrid />
-      <HomeCardsContainer type="Simulations"/>
+      <HomeCardsContainer type="Simulations" />
       <PhysicsSection />
-      <HomeCardsContainer type="Derivations"/>
+      <HomeCardsContainer type="Derivations" />
       <TechSection />
-      <HomeCardsContainer type="Tech"/>
-      <HomeCardsContainer type="Blogs"/>
+      <HomeCardsContainer type="Tech" />
+      <HomeCardsContainer type="Blogs" />
       <CTA />
-    </>
+    </section>
   );
 }

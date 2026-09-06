@@ -35,7 +35,7 @@ const Navbar = () => {
             href="/"
             className="mr-3 shrink-0 font-mono text-[15px] tracking-tight text-foreground"
           >
-            invariant<span className="text-yellow-500">_</span>
+            invariant<span className="text-emerald-500">_</span>
           </Link>
 
           <ul className="hidden items-center gap-0.5 font-mono text-[13px] md:flex">
@@ -45,17 +45,16 @@ const Navbar = () => {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors ${
-                      active
-                        ? "bg-foreground/[0.07] text-foreground"
-                        : "text-foreground/60 hover:text-foreground"
-                    }`}
+                    className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors ${active
+                      ? "bg-foreground/[0.07] text-foreground"
+                      : "text-foreground/60 hover:text-foreground"
+                      }`}
                   >
                     {l.label}
                     {l.flagship && (
                       <span
                         aria-hidden
-                        className="h-1 w-1 rounded-full bg-yellow-500"
+                        className="h-1 w-1 rounded-full bg-emerald-500"
                       />
                     )}
                   </Link>
@@ -70,7 +69,7 @@ const Navbar = () => {
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
               aria-expanded={open}
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full text-foreground/70 transition-colors hover:bg-foreground/[0.06] hover:text-foreground md:hidden"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-full text-foreground/70 transition-colors hover:bg-foreground/6 hover:text-foreground md:hidden"
             >
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                 {open ? (
@@ -103,15 +102,14 @@ const Navbar = () => {
                     <Link
                       href={l.href}
                       onClick={() => setOpen(false)}
-                      className={`flex items-center justify-between rounded-lg px-3 py-2 ${
-                        active
-                          ? "bg-foreground/[0.07] text-foreground"
-                          : "text-foreground/70 hover:bg-foreground/[0.05] hover:text-foreground"
-                      }`}
+                      className={`flex items-center justify-between rounded-lg px-3 py-2 ${active
+                        ? "bg-foreground/[0.07] text-foreground"
+                        : "text-foreground/70 hover:bg-foreground/5 hover:text-foreground"
+                        }`}
                     >
                       {l.label}
                       {l.flagship && (
-                        <span className="h-1 w-1 rounded-full bg-yellow-500" />
+                        <span className="h-1 w-1 rounded-full bg-emerald-500" />
                       )}
                     </Link>
                   </li>
