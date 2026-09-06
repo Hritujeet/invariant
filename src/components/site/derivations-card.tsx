@@ -14,7 +14,7 @@ import Link from "next/link";
 export function DerivationsCard() {
   return (
     <Link href="/derivations" className="group block w-[75vw] mx-auto">
-      <Card className="transition-all duration-300 w-full bg-card/50 hover:border-primary/50 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5">
+      <Card className="transition-all duration-300 w-full bg-card/50 hover:border-primary/50 hover:-translate-y-0.5">
         <CardHeader>
           <CardTitle className="text-lg font-semibold group-hover:text-primary transition-colors">
             Lagrangian Mechanics & Atwood System
