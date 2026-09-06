@@ -38,14 +38,14 @@ const PhysicsSection = () => {
             <span className="text-primary">Expressions</span> and{" "}
             <span className="text-primary">Solutions</span> derived from first principles
           </h2>
-          <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+          <p className="text-sm md:text-base leading-relaxed">
             This is my notebook on the internet where I derive solutions and
             expressions from scratch, followed by detailed explanations and key
             notes. And guess what — they are handwritten. In case you find
             yourself lucky enough, a derivation may be linked to an interactive
             simulation too.
           </p>
-          <span className="text-sm text-muted-foreground/50 italic">
+          <span className="text-sm text-muted-foreground italic">
             PS: I am not a big fan of my handwriting.
           </span>
         </div>

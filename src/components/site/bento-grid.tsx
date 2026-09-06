@@ -2,7 +2,7 @@ import { ArrowUpRight, Binary, Code2, PenLine } from "lucide-react";
 import Link from "next/link";
 
 const card =
-  "relative rounded-xl border border-border p-6 overflow-hidden transition-all duration-300";
+  "relative rounded-xl border border-border/50 p-6 overflow-hidden transition-all duration-300";
 
 const BentoGrid = () => {
   return (
@@ -20,7 +20,7 @@ const BentoGrid = () => {
       <div className="mt-10 grid grid-cols-1 gap-3 lg:grid-cols-5">
         {/* About card */}
         <article
-          className={`${card} hover:border-primary/50 duration-300 hover:-translate-y-0.5 flex flex-col justify-between lg:col-span-3 lg:row-span-3 bg-card/25 group h-full min-h-90`}
+          className={`${card} hover:border-border duration-300 hover:-translate-y-0.5 flex flex-col justify-between lg:col-span-3 lg:row-span-3 bg-card/25 group h-full min-h-90`}
         >
           <div className="flex items-start justify-between">
             <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
@@ -78,7 +78,7 @@ const BentoGrid = () => {
 
         <Link
           href="/derivations"
-          className={`${card} group bg-card/25 flex flex-col justify-between gap-8 lg:col-span-2 hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
+          className={`${card} group bg-card/25 flex flex-col justify-between gap-8 lg:col-span-2 hover:border-border/75 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
         >
           <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <div className="relative flex items-start justify-between gap-3">
@@ -103,7 +103,7 @@ const BentoGrid = () => {
 
         <Link
           href="/simulations"
-          className={`${card} group bg-card/25 flex flex-col justify-between gap-8 lg:col-span-2 hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
+          className={`${card} group bg-card/25 flex flex-col justify-between gap-8 lg:col-span-2 hover:border-border/75 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
         >
           <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <div className="relative flex items-start justify-between gap-3">
@@ -128,7 +128,7 @@ const BentoGrid = () => {
 
         <Link
           href="/tech"
-          className={`${card} group bg-card/25 flex flex-col justify-between gap-8 lg:col-span-2 hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
+          className={`${card} group bg-card/25 flex flex-col justify-between gap-8 lg:col-span-2 hover:border-border/75 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
         >
           <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <div className="relative flex items-start justify-between gap-3">
