@@ -14,6 +14,7 @@ const PhysicsSection = () => {
               <Image
                 src={bg_img}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover"
                 alt="Handwritten physics derivation background"
               />
@@ -23,6 +24,7 @@ const PhysicsSection = () => {
               <Image
                 src={fg_img}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover object-top"
                 alt="Handwritten physics derivation"
               />

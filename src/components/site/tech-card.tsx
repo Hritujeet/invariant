@@ -4,7 +4,7 @@ import { Badge } from '../ui/badge'
 
 const TechCard = () => {
   return (
-    <Card className='hover:ring-primary/20 duration-300 hover:-translate-y-1 cursor-default'>
+    <Card className='hover:ring-primary/20 duration-300 hover:-translate-y-1 cursor-default bg-card/50'>
       <CardContent className='space-y-4'>
         <h1 className="text-xl sm:text-2xl font-bold tracking-tight">Project JOSEPHINE</h1>
         <p className="text-sm mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio exercitationem saepe, nihil incidunt nostrum adipisci impedit cumque libero culpa! Saepe quas debitis recusandae consequatur aliquam omnis nulla, officiis error iure.</p>

@@ -15,7 +15,6 @@ export default function Home() {
       <HomeCardsContainer type="Derivations" />
       <TechSection />
       <HomeCardsContainer type="Tech" />
-      <HomeCardsContainer type="Blogs" />
       <CTA />
     </section>
   );

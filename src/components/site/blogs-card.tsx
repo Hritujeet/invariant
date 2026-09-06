@@ -6,7 +6,7 @@ import { buttonVariants } from "../ui/button"
 export function BlogsCard() {
   return (
     <div className="p-4 w-full h-full">
-      <div className="h-full border border-border bg-card rounded-xl overflow-hidden transition-all hover:border-primary/20 duration-300 hover:-translate-y-1">
+      <div className="h-full border bg-card/50 border-border/50 rounded-xl overflow-hidden transition-all hover:border-border duration-300 hover:-translate-y-1">
         <Image width={720} height={400} className="lg:h-48 md:h-36 w-full object-cover object-center" src={img} alt="blog" />
         <div className="p-6">
           <h2 className="tracking-widest text-xs title-font font-mono text-muted-foreground mb-1 uppercase">CATEGORY</h2>

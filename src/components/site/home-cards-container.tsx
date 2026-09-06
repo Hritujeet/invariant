@@ -3,7 +3,7 @@ import { DerivationsCard } from "./derivations-card";
 import SimulationsCard from "./simulations-card";
 import TechCard from "./tech-card";
 
-type CardType = "Simulations" | "Tech" | "Derivations" | "Blogs";
+type CardType = "Simulations" | "Tech" | "Derivations";
 
 type Props = {
   type: CardType;
@@ -24,11 +24,6 @@ const typeMeta: Record<CardType, { label: string; description: string }> = {
     label: "lab_03 // systems",
     description:
       "Projects I built. What the stack was, what broke, and the repo when there is one.",
-  },
-  Blogs: {
-    label: "lab_04 // thoughts",
-    description:
-      "Notes when a derivation or a sim bothers me. Opinions included.",
   },
 };
 
@@ -68,13 +63,6 @@ const HomeCardsContainer = ({ type }: Props) => {
             <TechCard />
             <TechCard />
             <TechCard />
-          </>
-        )}
-        {type == "Blogs" && (
-          <>
-            <BlogsCard />
-            <BlogsCard />
-            <BlogsCard />
           </>
         )}
       </div>

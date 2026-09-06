@@ -7,7 +7,7 @@ import { Button } from "../ui/button";
 
 const SimulationsCard = () => {
   return (
-    <Card className="group relative flex flex-col overflow-hidden transition-all duration-300 hover:border-primary/50 hover:-translate-y-1">
+    <Card className="group relative bg-card/50 flex flex-col overflow-hidden transition-all duration-300 hover:border-primary/50 hover:-translate-y-1">
       <Link href="/simulations" className="flex flex-col h-full">
         <CardHeader>
           <div className="relative aspect-video rounded-lg w-full overflow-hidden bg-muted">
@@ -15,6 +15,7 @@ const SimulationsCard = () => {
               src={img}
               alt="Atwood machine simulation"
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover opacity-80 rounded-lg transition-transform duration-500 group-hover:scale-[1.05]"
             />
             <div className="absolute top-3 left-3 flex items-center gap-1.5 font-mono text-[10px] tracking-wider uppercase bg-background/80 backdrop-blur-md border border-border/60 px-2.5 py-1 rounded-full text-foreground">
