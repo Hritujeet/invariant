@@ -25,7 +25,7 @@ const SimulationsCard = () => {
           className="pointer-events-none absolute inset-0 bg-linear-to-t from-zinc-950 via-zinc-950/20 to-transparent"
         />
 
-        <div className="absolute top-3 left-3 flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase bg-primary px-2 rounded-full">
+        <div className="absolute top-3 left-3 flex items-center gap-2 font-mono text-[10px] tracking-widest\ uppercase bg-primary px-2 rounded-full">
           <span className="relative flex size-1.5">
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-teal-400 opacity-70" />
             <span className="relative inline-flex size-1.5 rounded-full bg-teal-400" />
@@ -40,8 +40,8 @@ const SimulationsCard = () => {
             Simple Atwood System
           </h3>
           <p className="mt-1.5 text-sm leading-relaxed text-zinc-400">
-            Two masses, one pulley. Integrate the constraint and watch
-            acceleration emerge from net force over inertia.
+            Two masses, one pulley, one string. Run it and see what the
+            constraint actually does.
           </p>
         </div>
 

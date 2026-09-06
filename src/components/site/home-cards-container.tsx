@@ -13,22 +13,22 @@ const typeMeta: Record<CardType, { label: string; description: string }> = {
   Simulations: {
     label: "lab_01 // models",
     description:
-      "Interactive numerical models of classical mechanics. Constraints, forces, and energy conservation turned into something you can run, pause, and poke.",
+      "Run the models. Change a mass. Check whether energy stays put.",
   },
   Derivations: {
     label: "lab_02 // notebook",
     description:
-      "Handwritten derivations and solutions from first principles — the long threads of mechanics, shown one step at a time with the reasoning intact.",
+      "Writeups of problems I actually worked — scans, algebra, the messy bits.",
   },
   Tech: {
     label: "lab_03 // systems",
     description:
-      "Full-stack and other projects that take an idea off the page and into production. Build notes from the other half of the workbench.",
+      "Projects I built. What the stack was, what broke, and the repo when there is one.",
   },
   Blogs: {
     label: "lab_04 // thoughts",
     description:
-      "Blogs at the seam of physics and software: why a simulation is just a derivation with a timestep, what that means for how we build things, and what my thinking and opinions look like.",
+      "Notes when a derivation or a sim bothers me. Opinions included.",
   },
 };
 

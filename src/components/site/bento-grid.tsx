@@ -25,16 +25,16 @@ const BentoGrid = () => {
           <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
             About
           </p>
-          <div className="mt-8 flex flex-wrap gap-2 lg:mt-auto lg:pt-10">
-            <h2 className="mt-3 text-xl md:text-2xl xl:text-3xl font-semibold tracking-tight sm:text-2xl bg-linear-to-r from-foreground to-foreground/70 bg-clip-text">
-              Hi, I'm Hritujeet
+          <div className="mt-8 flex flex-col gap-3 lg:mt-auto lg:pt-10">
+            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl xl:text-4xl">
+              Hi. I am Hritujeet Sharma.
             </h2>
-            <p className="mt-4 text-sm md:text-base max-w-xl leading-relaxed text-muted-foreground">
-              They say physics and computer science are different worlds. I say,
-              why not bring them together? Won&apos;t it be amazing? That&apos;s
-              what I do, and that&apos;s who I am.
+            <p className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              Take a brain already tied to computer science. Pour in a little
+              physics. I am what happens next — ink on the page, a timestep in
+              the browser, the two refusing to stay in their lanes.
             </p>
-            <div className="flex items-center gap-1 my-1">
+            <div className="mt-1 flex flex-wrap items-center gap-1">
               {["physics", "computer science", "India"].map((tag) => (
                 <span
                   key={tag}
@@ -66,8 +66,8 @@ const BentoGrid = () => {
               Mechanics on paper
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Handwritten proofs with detailed explanations from first
-              principles — the long threads, shown one step at a time.
+              Notebook pages: pendulums, Atwood, whatever I&apos;m stuck on.
+              Written out in ink, step by step.
             </p>
           </div>
         </Link>
@@ -91,8 +91,8 @@ const BentoGrid = () => {
               Equations that move
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              This is where CS and Physics meet. Discrete models you can run —
-              the same laws, stepped through in time.
+              The same systems, with a timestep. Pause them, change a mass, see
+              if energy holds.
             </p>
           </div>
         </Link>
@@ -116,8 +116,7 @@ const BentoGrid = () => {
               Systems from scratch
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Full-stack web and other CS projects — the software side of the
-              workbench.
+              Web apps and other CS work. Repos, stack choices, the usual.
             </p>
           </div>
         </Link>

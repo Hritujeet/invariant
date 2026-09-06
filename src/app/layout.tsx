@@ -23,7 +23,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "invariant",
-  description: "More than just a personal website, it's a place where software engineering meets the art of physics and simulations.",
+  description:
+    "Mechanics notes, simulations, and software — Hritujeet Sharma.",
   keywords: ["software engineering", "physics", "simulations", "personal website"],
   creator: "Hritujeet Sharma",
 };
