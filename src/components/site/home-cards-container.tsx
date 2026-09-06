@@ -1,5 +1,5 @@
 import BlogsCard from "./blogs-card";
-import DerivationsCard from "./derivations-card";
+import { DerivationsCard } from "./derivations-card";
 import SimulationsCard from "./simulations-card";
 import TechCard from "./tech-card";
 
@@ -56,7 +56,13 @@ const HomeCardsContainer = ({ type }: Props) => {
             <SimulationsCard />
           </>
         )}
-        {type == "Derivations" && <DerivationsCard />}
+        {type == "Derivations" && (
+          <>
+            <div className="col-span-full"><DerivationsCard /></div>
+            <div className="col-span-full"><DerivationsCard /></div>
+            <div className="col-span-full"><DerivationsCard /></div>
+          </>
+        )}
         {type == "Tech" && <TechCard />}
         {type == "Blogs" && <BlogsCard />}
       </div>
