@@ -36,7 +36,7 @@ const HomeCardsContainer = ({ type }: Props) => {
         <p className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase">
           {meta.label}
         </p>
-        <h1 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
+        <h1 className="font-heading mt-3 text-3xl font-semibold tracking-[-0.02em] leading-tight md:text-4xl">
           Explore <span className="text-primary">{type}</span>
         </h1>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">

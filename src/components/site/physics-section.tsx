@@ -34,7 +34,7 @@ const PhysicsSection = () => {
 
         {/* Text column */}
         <div className="w-full min-w-0 md:w-1/2 flex flex-col gap-6">
-          <h2 className="text-4xl md:text-4xl font-semibold md:font-bold">
+          <h2 className="font-heading text-4xl font-semibold tracking-[-0.02em] leading-[1.2]">
             <span className="text-primary">Expressions</span> and{" "}
             <span className="text-primary">Solutions</span> derived from first principles
           </h2>

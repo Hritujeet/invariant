@@ -123,8 +123,18 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1, "liga" 1;
   }
   html {
     @apply font-sans;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: var(--font-heading), serif;
   }
 }

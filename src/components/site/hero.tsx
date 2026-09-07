@@ -20,11 +20,12 @@ export default function Hero() {
             </span>
           </div>
 
-          <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
-            Mechanics on paper. Software that ships.
+          <h1 className="font-heading text-5xl font-semibold tracking-[-0.01em] leading-[1.15] sm:text-6xl lg:text-[4.25rem]">
+            Mechanics on paper.{" "}
+            <span className="text-foreground/70">Software that ships.</span>
           </h1>
 
-          <p className="mt-6 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mt-7 max-w-lg text-base leading-[1.75] text-muted-foreground sm:text-[1.05rem]">
             I derive classical mechanics in a notebook, then I run the same
             system as a simulation. I also build web apps. That&apos;s most of
             what I do.

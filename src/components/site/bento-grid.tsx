@@ -7,13 +7,13 @@ const card =
 const BentoGrid = () => {
   return (
     <section className="relative mx-auto max-w-6xl px-4 pb-8 md:pb-12">
-      <div className="quote mx-auto flex max-w-5xl flex-col gap-1 md:px-8">
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-transparent bg-clip-text bg-linear-to-r from-foreground to-zinc-600 tracking-tight">
+      <div className="quote mx-auto flex max-w-5xl flex-col gap-3 md:px-8">
+        <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal leading-[1.3] tracking-[-0.015em] text-transparent bg-clip-text bg-linear-to-r from-foreground to-zinc-600">
           The universe is a computer, but it&apos;s not a computer made of
           silicon, it&apos;s a computer made of the laws of physics.
         </h1>
-        <span className="text-muted-foreground">
-          — Seth Lloyd (Programming the Universe)
+        <span className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
+          — Seth Lloyd · Programming the Universe
         </span>
       </div>
 
@@ -55,8 +55,8 @@ const BentoGrid = () => {
           </div>
 
           <div className="flex flex-col gap-3">
-            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl xl:text-4xl">
-              Hi. I am Hritujeet Sharma.
+            <h2 className="font-heading text-2xl font-medium tracking-[-0.01em] leading-snug md:text-3xl xl:text-4xl">
+              Hi. I&apos;m Hritujeet Sharma.
             </h2>
             <p className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               Take a brain already tied to computer science. Pour in a little
@@ -91,7 +91,7 @@ const BentoGrid = () => {
             <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
               /derivations
             </p>
-            <h3 className="mt-1 text-lg font-medium tracking-tight">
+            <h3 className="mt-1 font-heading text-lg font-normal tracking-[-0.01em]">
               Mechanics on paper
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -116,7 +116,7 @@ const BentoGrid = () => {
             <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
               /simulations
             </p>
-            <h3 className="mt-1 text-lg font-medium tracking-tight">
+            <h3 className="mt-1 font-heading text-lg font-normal tracking-[-0.01em]">
               Equations that move
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
@@ -141,7 +141,7 @@ const BentoGrid = () => {
             <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
               /tech
             </p>
-            <h3 className="mt-1 text-lg font-medium tracking-tight">
+            <h3 className="mt-1 font-heading text-lg font-normal tracking-[-0.01em]">
               Systems from scratch
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
