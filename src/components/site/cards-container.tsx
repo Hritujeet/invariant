@@ -27,7 +27,7 @@ const typeMeta: Record<CardType, { label: string; description: string }> = {
   },
 };
 
-const HomeCardsContainer = ({ type }: Props) => {
+const CardContainer = ({ type }: Props) => {
   const meta = typeMeta[type];
 
   return (
@@ -70,4 +70,4 @@ const HomeCardsContainer = ({ type }: Props) => {
   );
 };
 
-export default HomeCardsContainer;
+export default CardContainer;
