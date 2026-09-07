@@ -32,7 +32,7 @@ const CTA = () => {
             href="/profile"
             className={`rounded-full px-6 py-5 ${buttonVariants({ variant: "outline" })}`}
           >
-            Visit Profile
+            View Profile
           </Link>
         </div>
       </div>
