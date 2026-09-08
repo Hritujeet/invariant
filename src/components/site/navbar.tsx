@@ -1,8 +1,10 @@
 "use client";
 
+import { LogIn, Menu, User, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { buttonVariants } from "../ui/button";
 
 const links = [
   { href: "/tech", label: "tech" },
@@ -10,6 +12,7 @@ const links = [
   { href: "/derivations", label: "derivations" },
   { href: "/blog", label: "blog" },
   { href: "/josephine", label: "josephine", flagship: true },
+  { href: "/about", label: "about" },
 ];
 
 const Navbar = () => {
@@ -60,6 +63,30 @@ const Navbar = () => {
               );
             })}
           </ul>
+
+          <div className="flex items-center gap-1 sm:gap-2 ml-auto md:ml-4">
+
+            <Link
+              href="/profile"
+              className={buttonVariants({ variant: "ghost", size: "icon-sm", className: "rounded-full" })}
+              aria-label="Profile"
+            >
+              <User className="size-4" />
+            </Link>
+            <Link
+              href="#"
+              className={buttonVariants({ variant: "default", size: "sm", className: "rounded-full px-3 sm:px-4" })}
+            >
+              <LogIn className="mr-1.5 size-3.5" />
+            </Link>
+            <button
+              onClick={() => setOpen(!open)}
+              className="md:hidden flex items-center justify-center rounded-full p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+              aria-label="Toggle menu"
+            >
+              {open ? <X className="size-4" /> : <Menu className="size-4" />}
+            </button>
+          </div>
         </nav>
 
         {open && (

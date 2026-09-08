@@ -3,11 +3,11 @@ import Link from "next/link";
 
 const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "Profile" },
     { href: "/simulations", label: "Simulations" },
     { href: "/derivations", label: "Derivations" },
     { href: "/tech", label: "Tech" },
     { href: "/blog", label: "Blog" },
+    { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
 ];
 

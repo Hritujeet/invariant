@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { buttonVariants } from "../ui/button";
+import GroundToGroundProjectile from "../simulations/ground-to-ground-projectile";
 
 const CTA = () => {
   return (
     <section className="mx-auto w-full px-4 py-24 mb-12">
+      <GroundToGroundProjectile />
       <div className="relative flex flex-col items-center justify-center gap-6 overflow-hidden bg-muted/50 p-12 text-center">
 
         <h1 className="font-heading text-4xl font-semibold leading-tight tracking-[-0.02em] md:text-5xl">
