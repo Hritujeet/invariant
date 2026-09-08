@@ -5,8 +5,8 @@ const BlogsPage = () => {
   return (
     <section className='py-10'>
       <div className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-muted-foreground">
-          <span className="text-primary">Thoughts</span> beyond the equations and code
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
+          Thoughts beyond the equations and code
         </h1>
         <p className="text-lg text-muted-foreground">
           Thought pieces, essays, and deep dives exploring physics, code, and philosophy. Tech, Science, Humanties - all covered.

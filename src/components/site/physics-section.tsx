@@ -4,7 +4,7 @@ import Image from "next/image"
 
 const PhysicsSection = () => {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-12 overflow-hidden">
+    <section className="mx-auto bg-muted max-w-6xl px-6 py-4 overflow-hidden">
       <div className="flex flex-col items-center gap-12 md:flex-row md:items-center md:gap-12">
 
         {/* Image column */}
@@ -34,9 +34,8 @@ const PhysicsSection = () => {
 
         {/* Text column */}
         <div className="w-full min-w-0 md:w-1/2 flex flex-col gap-6">
-          <h2 className="font-heading text-4xl font-semibold tracking-[-0.02em] leading-[1.2]">
-            <span className="text-primary">Expressions</span> and{" "}
-            <span className="text-primary">Solutions</span> derived from first principles
+          <h2 className="font-heading text-4xl md:text-5xl font-bold tracking-tight leading-[1.2]">
+            Expressions and Solutions derived from first principles
           </h2>
           <p className="text-sm md:text-base leading-relaxed">
             This is my notebook on the internet where I derive solutions and

@@ -4,18 +4,18 @@ import { Badge } from "@/components/ui/badge";
 
 const TechSection = () => {
   return (
-    <section className="bg-card/50 overflow-hidden md:flex md:min-h-120">
+    <section className="bg-muted overflow-hidden md:flex md:min-h-120">
       {/* Text side */}
       <div className="flex flex-1 flex-col justify-center px-8 py-16 md:px-16 md:py-24">
         <Badge variant="outline" className="mb-4 w-fit font-mono text-[10px] uppercase tracking-wider">
           Tech
         </Badge>
 
-        <h1 className="font-heading text-3xl font-semibold tracking-[-0.02em] leading-tight md:text-4xl">
+        <h1 className="font-heading text-4xl font-bold tracking-[-0.02em] leading-tight md:text-5xl">
           Building software that bridges ideas to reality
         </h1>
 
-        <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
+        <p className="mt-6 max-w-md text-sm md:text-base leading-relaxed text-muted-foreground">
           I've been coding since I was 11 — starting with simple websites
           and moving on to more complex projects since. I build web apps
           that bring ideas into real life, making sure they look as

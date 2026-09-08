@@ -3,6 +3,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "../ui/button";
+import Atwood from "../simulations/atwood";
 
 export default function Hero() {
   return (
@@ -20,7 +21,7 @@ export default function Hero() {
             </span>
           </div>
 
-          <h1 className="font-heading text-5xl font-semibold tracking-[-0.01em] leading-[1.15] sm:text-6xl lg:text-[4.25rem]">
+          <h1 className="text-4xl tracking-tight leading-tight sm:text-5xl lg:text-6xl font-extrabold md:font-black">
             Mechanics on paper.{" "}
             <span className="text-foreground/70">Software that ships.</span>
           </h1>
@@ -55,7 +56,9 @@ export default function Hero() {
         </div>
 
         {/* Atwood Simulation */}
-        <div></div>
+        <div>
+          <Atwood />
+        </div>
       </div>
     </section>
   );

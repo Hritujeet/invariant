@@ -4,7 +4,7 @@ import React from 'react'
 const DerivationsPage = () => {
   return (
     <section className='py-10'>
-      <div className="text-center mb-10"><h1 className="text-4xl font-bold text-muted-foreground"><span className="text-primary">Derivations</span> from first principles</h1>
+      <div className="text-center mb-10"><h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">Derivations from first principles</h1>
         <p className="text-lg text-muted-foreground">
           From expressions to problems, I derive solutions and formulas that make the physics behind things more intuitive.
         </p></div>

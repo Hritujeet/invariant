@@ -3,7 +3,7 @@ import SimulationsCard from '@/components/site/simulations-card'
 const SimulationsPage = () => {
   return (
     <section className='py-10'>
-      <div className="text-center mb-10"><h1 className="text-4xl font-bold text-muted-foreground"><span className="text-primary">Simulations</span> that speak</h1>
+      <div className="text-center mb-10"><h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">Simulations that speak</h1>
         <p className="text-lg text-muted-foreground">
           I translate the physics on paper into interactive simulations that make them easier to grasp.
         </p></div>

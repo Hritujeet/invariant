@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { ModeToggle } from "./theme-toggle";
 
 const links = [
   { href: "/tech", label: "tech" },
@@ -44,9 +43,9 @@ const Navbar = () => {
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors ${active
-                        ? "bg-secondary text-foreground font-medium"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
+                    className={`flex items-center gap-1.5 text-sm rounded-full px-3 py-1.5 transition-colors ${active
+                      ? "bg-secondary text-foreground font-medium"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
                       }`}
                   >
                     {l.label}
@@ -61,34 +60,6 @@ const Navbar = () => {
               );
             })}
           </ul>
-
-          <div className="ml-2 flex items-center gap-1 border-l border-border pl-2">
-            <ModeToggle />
-            <button
-              onClick={() => setOpen((v) => !v)}
-              aria-label="Toggle menu"
-              aria-expanded={open}
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground md:hidden"
-            >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                {open ? (
-                  <path
-                    d="M3 3L13 13M13 3L3 13"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                ) : (
-                  <path
-                    d="M2 4.5H14M2 8H14M2 11.5H14"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                  />
-                )}
-              </svg>
-            </button>
-          </div>
         </nav>
 
         {open && (
@@ -102,8 +73,8 @@ const Navbar = () => {
                       href={l.href}
                       onClick={() => setOpen(false)}
                       className={`flex items-center justify-between rounded-lg px-3 py-2 transition-colors ${active
-                          ? "bg-secondary text-foreground font-medium"
-                          : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                        ? "bg-secondary text-foreground font-medium"
+                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
                         }`}
                     >
                       {l.label}

@@ -2,13 +2,13 @@ import { ArrowUpRight, Binary, Code2, PenLine } from "lucide-react";
 import Link from "next/link";
 
 const card =
-  "relative rounded-xl border border-border/50 p-6 overflow-hidden transition-all duration-300";
+  "relative rounded-xl border border-border p-6 overflow-hidden transition-all duration-300";
 
 const BentoGrid = () => {
   return (
     <section className="relative mx-auto max-w-6xl px-4 pb-8 md:pb-12">
       <div className="quote mx-auto flex max-w-5xl flex-col gap-3 md:px-8">
-        <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-normal leading-[1.3] tracking-[-0.015em] text-transparent bg-clip-text bg-linear-to-r from-foreground to-zinc-600">
+        <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.02] tracking-tight text-transparent bg-clip-text bg-linear-to-r from-foreground to-zinc-600">
           The universe is a computer, but it&apos;s not a computer made of
           silicon, it&apos;s a computer made of the laws of physics.
         </h1>
@@ -20,7 +20,7 @@ const BentoGrid = () => {
       <div className="mt-10 grid grid-cols-1 gap-3 lg:grid-cols-5">
         {/* About card */}
         <article
-          className={`${card} hover:border-border duration-300 hover:-translate-y-0.5 flex flex-col justify-between lg:col-span-3 lg:row-span-3 bg-card/25 group h-full min-h-90`}
+          className={`${card} hover:border-primary/30 duration-300 hover:-translate-y-0.5 flex flex-col justify-between lg:col-span-3 lg:row-span-3 bg-muted/50 hover:bg-muted group h-full min-h-90`}
         >
           <div className="flex items-start justify-between">
             <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
@@ -60,7 +60,7 @@ const BentoGrid = () => {
             </h2>
             <p className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
               Take a brain already tied to computer science. Pour in a little
-              physics. I am what happens next — ink on the page, a timestep in
+              physics. I am what happens next — scribbles on the page, a timestep in
               the browser, the two refusing to stay in their lanes.
             </p>
             <div className="mt-1 flex flex-wrap items-center gap-1">
@@ -78,7 +78,7 @@ const BentoGrid = () => {
 
         <Link
           href="/derivations"
-          className={`${card} group bg-card/25 flex flex-col justify-between gap-8 lg:col-span-2 hover:border-border/75 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
+          className={`${card} group bg-muted/50 hover:bg-muted flex flex-col justify-between gap-8 lg:col-span-2 hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
         >
           <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <div className="relative flex items-start justify-between gap-3">
@@ -92,18 +92,17 @@ const BentoGrid = () => {
               /derivations
             </p>
             <h3 className="mt-1 font-heading text-lg font-normal tracking-[-0.01em]">
-              Mechanics on paper
+              Derivations on paper
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Notebook pages: pendulums, Atwood, whatever I&apos;m stuck on.
-              Written out in ink, step by step.
+              Handwritten derivations. From expressions to problems, all in one place - physics and mathematics
             </p>
           </div>
         </Link>
 
         <Link
           href="/simulations"
-          className={`${card} group bg-card/25 flex flex-col justify-between gap-8 lg:col-span-2 hover:border-border/75 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
+          className={`${card} group bg-muted/50 hover:bg-muted flex flex-col justify-between gap-8 lg:col-span-2 hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
         >
           <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <div className="relative flex items-start justify-between gap-3">
@@ -120,15 +119,14 @@ const BentoGrid = () => {
               Equations that move
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              The same systems, with a timestep. Pause them, change a mass, see
-              if energy holds.
+              Taking physics from paper to code and from code to inetractive simulations.
             </p>
           </div>
         </Link>
 
         <Link
           href="/tech"
-          className={`${card} group bg-card/25 flex flex-col justify-between gap-8 lg:col-span-2 hover:border-border/75 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
+          className={`${card} group bg-muted/50 hover:bg-muted flex flex-col justify-between gap-8 lg:col-span-2 hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
         >
           <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           <div className="relative flex items-start justify-between gap-3">
@@ -145,7 +143,7 @@ const BentoGrid = () => {
               Systems from scratch
             </h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Web apps and other CS work. Repos, stack choices, the usual.
+              From usual scripts to full stack web apps - I code it all with a nice cup of coffee.
             </p>
           </div>
         </Link>
