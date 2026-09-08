@@ -12,7 +12,6 @@ const links = [
   { href: "/derivations", label: "derivations" },
   { href: "/blog", label: "blog" },
   { href: "/josephine", label: "josephine", flagship: true },
-  { href: "/about", label: "about" },
 ];
 
 const Navbar = () => {

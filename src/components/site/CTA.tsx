@@ -30,10 +30,10 @@ const CTA = () => {
             Read derivations
           </Link>
           <Link
-            href="/profile"
-            className={`rounded-full px-6 py-5 ${buttonVariants({ variant: "secondary" })}`}
+            href="/about"
+            className={`rounded-full px-6 py-5 ${buttonVariants({ variant: "default" })}`}
           >
-            View Profile
+            Learn More
           </Link>
         </div>
       </div>
