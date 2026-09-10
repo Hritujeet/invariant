@@ -1,6 +1,6 @@
 "use client";
 
-import { LogIn, Menu, User, X } from "lucide-react";
+import { LogIn, Menu, SquareChevronRight, User, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -76,7 +76,13 @@ const Navbar = () => {
               href="#"
               className={buttonVariants({ variant: "default", size: "sm", className: "rounded-full px-3 sm:px-4" })}
             >
-              <LogIn className="mr-1.5 size-3.5" />
+              <LogIn className="size-3.5" />
+            </Link>
+            <Link
+              href="/admin"
+              className={buttonVariants({ variant: "default", size: "sm", className: "rounded-full px-3 sm:px-4" })}
+            >
+              <SquareChevronRight className="size-3.5" />
             </Link>
             <button
               onClick={() => setOpen(!open)}

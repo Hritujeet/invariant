@@ -55,8 +55,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Atwood Simulation */}
-        <div>
+        {/* Atwood Simulation — hidden on mobile to prevent h-screen overflow */}
+        <div className="hidden lg:block lg:col-span-5 w-full">
           <Atwood />
         </div>
       </div>
