@@ -26,10 +26,6 @@ export function DerivationsCard() {
 
         <CardContent>
           <div className="rounded-lg border border-border/50 bg-muted/30 p-3 font-mono text-xs text-muted-foreground">
-            <div className="flex items-center justify-between text-[11px] text-foreground/80 font-semibold mb-1">
-              <span>L = T − V</span>
-              <span>d/dt(∂L/∂q̇) = ∂L/∂q</span>
-            </div>
             <p className="text-[10px] text-muted-foreground/70">
               m₁g − T = m₁a · T − m₂g = m₂a
             </p>
