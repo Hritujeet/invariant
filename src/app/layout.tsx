@@ -1,13 +1,13 @@
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { DM_Sans, Geist, Geist_Mono, Roboto_Slab } from "next/font/google";
+import { DM_Sans, Geist, Geist_Mono, Roboto_Slab, Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
-const dmSansHeading = DM_Sans({ subsets: ['latin'], variable: '--font-heading' });
+const dmSansHeading = DM_Sans({subsets:['latin'],variable:'--font-heading'});
 
-const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
+const inter = Inter({subsets:['latin'],variable:'--font-sans'});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,14 +38,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         geistSans.variable,
         geistMono.variable,
         "font-sans",
-        geist.variable,
+        inter.variable,
         dmSansHeading.variable,
       )}
     >
       <body className="min-h-full flex flex-col">
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="system"
+          enableSystem
           disableTransitionOnChange
         >
           <NextTopLoader color="#10B981" />

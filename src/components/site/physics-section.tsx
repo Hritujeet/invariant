@@ -5,7 +5,7 @@ import Link from "next/link"
 
 const PhysicsSection = () => {
   return (
-    <section className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16 md:py-20">
+    <section className="mx-auto container px-4 sm:px-6 py-12 sm:py-16 md:py-20">
       <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16 lg:gap-24">
 
         {/* Image column — strictly contained, never overflows */}
@@ -59,13 +59,10 @@ const PhysicsSection = () => {
 
         {/* Text column */}
         <div className="w-full md:w-1/2 flex flex-col gap-5 text-center md:text-left">
-          <span className="inline-block text-[10px] font-mono uppercase tracking-[0.18em] text-primary/80 font-semibold">
-            Physics
-          </span>
 
           <h2 className="font-heading text-3xl sm:text-4xl md:text-[2.6rem] lg:text-5xl font-bold tracking-tight leading-[1.15]">
             Expressions and solutions derived from{" "}
-            <span className="text-primary">first principles</span>
+            first principles
           </h2>
 
           <p className="text-sm sm:text-base leading-relaxed text-muted-foreground max-w-md mx-auto md:mx-0">

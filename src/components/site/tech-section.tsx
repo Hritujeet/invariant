@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const TechSection = () => {
   return (
-    <section className="bg-muted text-muted-foreground overflow-hidden">
-      <div className="container mx-auto flex px-4 py-24 md:flex-row flex-col-reverse items-center max-w-6xl">
+    <section className="text-muted-foreground overflow-hidden">
+      <div className="container mx-auto flex px-4 py-24 md:flex-row flex-col-reverse items-center">
 
         {/* Text side */}
         <div className="lg:grow md:w-2/3 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left items-center text-center">
@@ -19,7 +19,7 @@ const TechSection = () => {
 
           <h2 className="font-heading lg:text-5xl text-4xl mb-4 font-bold text-foreground tracking-[-0.02em] leading-tight max-w-md md:max-w-none">
             Building software that bridges{" "}
-            <span className="text-primary">ideas to reality</span>
+            ideas to reality
           </h2>
 
           <p className="mb-8 leading-relaxed text-sm max-w-md">

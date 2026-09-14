@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { buttonVariants } from "../ui/button";
+import { ThemeToggle } from "../ui/theme-toggle";
 
 const links = [
   { href: "/tech", label: "tech" },
@@ -63,8 +64,15 @@ const Navbar = () => {
             })}
           </ul>
 
-          <div className="flex items-center gap-1 sm:gap-2 ml-auto md:ml-4">
-
+          <div className="flex items-center gap-1 sm:gap-1.5 ml-auto md:ml-4">
+            <ThemeToggle />
+            <Link
+              href="/admin"
+              className={buttonVariants({ variant: "ghost", size: "icon-sm", className: "rounded-full" })}
+              aria-label="Admin"
+            >
+              <SquareChevronRight className="size-4" />
+            </Link>
             <Link
               href="/profile"
               className={buttonVariants({ variant: "ghost", size: "icon-sm", className: "rounded-full" })}
@@ -73,16 +81,17 @@ const Navbar = () => {
               <User className="size-4" />
             </Link>
             <Link
-              href="#"
-              className={buttonVariants({ variant: "default", size: "sm", className: "rounded-full px-3 sm:px-4" })}
+              href="/login"
+              className={buttonVariants({ variant: "default", size: "sm", className: "rounded-full px-4 ml-1 hidden sm:flex" })}
             >
-              <LogIn className="size-3.5" />
+              <span className="text-xs font-semibold">Log in</span>
             </Link>
             <Link
-              href="/admin"
-              className={buttonVariants({ variant: "default", size: "sm", className: "rounded-full px-3 sm:px-4" })}
+              href="/login"
+              className={buttonVariants({ variant: "default", size: "icon-sm", className: "rounded-full ml-1 sm:hidden" })}
+              aria-label="Log in"
             >
-              <SquareChevronRight className="size-3.5" />
+              <LogIn className="size-3.5" />
             </Link>
             <button
               onClick={() => setOpen(!open)}
