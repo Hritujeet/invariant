@@ -64,9 +64,9 @@ const Navbar = () => {
             })}
           </ul>
 
-          <div className="flex items-center gap-1 sm:gap-1.5 ml-auto md:ml-4">
+          <div className="flex items-center gap-1 sm:gap-1.5 ml-auto md:ml-4 mr-4">
             <ThemeToggle />
-            <Link
+            {/* <Link
               href="/admin"
               className={buttonVariants({ variant: "ghost", size: "icon-sm", className: "rounded-full" })}
               aria-label="Admin"
@@ -79,17 +79,11 @@ const Navbar = () => {
               aria-label="Profile"
             >
               <User className="size-4" />
-            </Link>
+            </Link> */}
             <Link
-              href="/login"
-              className={buttonVariants({ variant: "default", size: "sm", className: "rounded-full px-4 ml-1 hidden sm:flex" })}
-            >
-              <span className="text-xs font-semibold">Log in</span>
-            </Link>
-            <Link
-              href="/login"
-              className={buttonVariants({ variant: "default", size: "icon-sm", className: "rounded-full ml-1 sm:hidden" })}
-              aria-label="Log in"
+              href="/sign-in"
+              className={buttonVariants({ variant: "default", className: "rounded-full" })}
+              aria-label="Sign In"
             >
               <LogIn className="size-3.5" />
             </Link>
