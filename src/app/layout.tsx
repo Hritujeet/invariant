@@ -5,9 +5,9 @@ import { DM_Sans, Geist, Geist_Mono, Roboto_Slab, Inter } from "next/font/google
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
 
-const dmSansHeading = DM_Sans({subsets:['latin'],variable:'--font-heading'});
+const dmSansHeading = DM_Sans({ subsets: ['latin'], variable: '--font-heading' });
 
-const dmSans = DM_Sans({subsets:['latin'],variable:'--font-sans'});
+const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-sans' });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -49,7 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem
           disableTransitionOnChange
         >
-          <NextTopLoader color="#10B981" />
+          <NextTopLoader showSpinner={false} />
           {children}
         </ThemeProvider>
       </body>
