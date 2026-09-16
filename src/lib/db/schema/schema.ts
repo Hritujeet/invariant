@@ -1,6 +1,7 @@
 import { relations } from "drizzle-orm/_relations";
 import { AnyPgColumn, boolean, integer, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 import { pgTable } from "drizzle-orm/pg-core/table";
+import { user } from "./auth-schema";
 
 /*
 Tables
@@ -11,15 +12,6 @@ Tables
 // 5. Comments
 // 6. Category
 */
-
-export const userTable = pgTable("user", {
-    id: uuid("id").primaryKey().notNull().unique(),
-    name: varchar("name", { length: 255 }).notNull(),
-    email: varchar("email", { length: 255 }).notNull().unique(),
-    password: varchar("password", { length: 255 }).notNull(),
-    createdAt: timestamp("created_at").defaultNow().notNull(),
-    updatedAt: timestamp("updated_at").defaultNow().notNull().$onUpdate(() => new Date()),
-})
 
 export const category = pgTable("category", {
     id: uuid("id").primaryKey().notNull().unique(),
@@ -40,7 +32,8 @@ export const blogTable = pgTable("blog", {
 
 export const blogLikeTable = pgTable("blog_like", {
     blogId: uuid("blog_id").references(() => blogTable.id),
-    userId: uuid("user_id").references(() => userTable.id),
+    // Better Auth user id is text
+    userId: text("user_id").references(() => user.id),
     createdAt: timestamp("created_at").defaultNow().notNull(),
 })
 
@@ -49,7 +42,6 @@ export const blogCategoryTable = pgTable("blog_category", {
     categoryId: uuid("category_id").references(() => category.id),
     createdAt: timestamp("created_at").defaultNow().notNull(),
 })
-
 
 export const derivationsTable = pgTable("derivation", {
     id: uuid("id").primaryKey().unique().notNull(),
@@ -88,7 +80,8 @@ export const projectsTable = pgTable("projects", {
 export const commentTable = pgTable("comment", {
     id: uuid().notNull().unique().primaryKey(),
     comment: text("comment").notNull(),
-    authorId: uuid("author_id").references(() => userTable.id),
+    // Better Auth user id is text
+    authorId: text("author_id").references(() => user.id),
     blogId: uuid("blog_id").references(() => blogTable.id),
     derivationId: uuid("derivation_id").references(() => derivationsTable.id),
     devlogId: uuid("devlog_id").references(() => devlogs.id),
@@ -112,11 +105,6 @@ export const devlogRelations = relations(devlogs, ({ many }) => ({
     comments: many(commentTable),
 }))
 
-export const userRelations = relations(userTable, ({ many }) => ({
-    comments: many(commentTable),
-    likes: many(blogLikeTable),
-}))
-
 export const categoryRelations = relations(category, ({ many }) => ({
     blogs: many(blogCategoryTable),
 }))
@@ -126,9 +114,9 @@ export const blogLikeRelations = relations(blogLikeTable, ({ one }) => ({
         fields: [blogLikeTable.blogId],
         references: [blogTable.id],
     }),
-    user: one(userTable, {
+    user: one(user, {
         fields: [blogLikeTable.userId],
-        references: [userTable.id],
+        references: [user.id],
     }),
 }))
 
@@ -156,9 +144,9 @@ export const commentRelations = relations(commentTable, ({ one, many }) => ({
         fields: [commentTable.devlogId],
         references: [devlogs.id],
     }),
-    user: one(userTable, {
+    user: one(user, {
         fields: [commentTable.authorId],
-        references: [userTable.id],
+        references: [user.id],
     }),
     parentComment: one(commentTable, {
         fields: [commentTable.replyTo],
