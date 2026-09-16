@@ -102,10 +102,10 @@ export default function JosephinePage() {
           <Badge variant="secondary" className="mb-4">
             Project Blueprint
           </Badge>
-          <h1 className="text-5xl font-black tracking-tight text-slate-900">
+          <h1 className="text-5xl font-black tracking-tight">
             Project JOSEPHINE
           </h1>
-          <p className="mt-3 text-slate-500">
+          <p className="mt-3 text-muted-foreground">
             A native, Python-based OS companion for Windows.
           </p>
           <div className="mt-6">
@@ -122,7 +122,7 @@ export default function JosephinePage() {
               <Card key={mod.id} id={mod.id}>
                 <CardHeader>
                   <div className="flex items-center gap-2">
-                    <Icon className="h-5 w-5 text-slate-500" />
+                    <Icon className="h-5 w-5 text-muted-foreground" />
                     <CardTitle>{mod.title}</CardTitle>
                   </div>
                   <CardDescription>{mod.subtitle}</CardDescription>
@@ -131,10 +131,10 @@ export default function JosephinePage() {
                   <ul className="flex flex-col gap-3">
                     {mod.points.map(([label, text]) => (
                       <li key={label}>
-                        <p className="text-sm font-semibold text-slate-800">
+                        <p className="text-sm font-semibold">
                           {label}
                         </p>
-                        <p className="text-sm text-slate-500">{text}</p>
+                        <p className="text-sm text-muted-foreground">{text}</p>
                       </li>
                     ))}
                   </ul>
@@ -142,7 +142,7 @@ export default function JosephinePage() {
                   {mod.libraries.length > 0 && (
                     <>
                       <Separator className="my-4" />
-                      <p className="mb-2 text-xs font-medium text-slate-400">
+                      <p className="mb-2 text-xs font-medium text-muted-foreground">
                         Required libraries
                       </p>
                       <div className="flex flex-wrap gap-2">
@@ -160,7 +160,7 @@ export default function JosephinePage() {
           })}
         </div>
 
-        <p className="mt-12 text-center text-xs text-slate-400">
+        <p className="mt-12 text-center text-xs text-muted-foreground">
           Josephine — a native Python companion for Windows.
         </p>
       </div>
