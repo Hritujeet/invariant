@@ -1,7 +1,10 @@
-import { BlogsCard } from "./blogs-card";
+"use client";
+
+import { motion } from "motion/react";
 import { DerivationsCard } from "./derivations-card";
 import SimulationsCard from "./simulations-card";
 import TechCard from "./tech-card";
+import { ScrollReveal } from "../ui/scroll-reveal";
 
 type CardType = "Simulations" | "Tech" | "Derivations";
 
@@ -27,45 +30,83 @@ const typeMeta: Record<CardType, { label: string; description: string }> = {
   },
 };
 
+// Cards stagger in one by one
+const gridVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.09,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 14, scale: 0.97, filter: "blur(5px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      scale:   { type: "spring" as const, stiffness: 260, damping: 22 },
+      opacity: { duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] as const },
+      y:       { duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] as const },
+      filter:  { duration: 0.4, ease: [0.21, 0.47, 0.32, 0.98] as const },
+    },
+  },
+};
+
 const CardContainer = ({ type }: Props) => {
   const meta = typeMeta[type];
 
   return (
     <section className="simulations-container mx-auto mt-20 md:mt-28">
-      <div className="mx-auto max-w-2xl px-4 text-center">
-        <p className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase">
-          {meta.label}
-        </p>
-        <h1 className="font-heading mt-3 text-3xl font-black tracking-tight leading-tight md:text-4xl">
-          Explore {type}
-        </h1>
-        <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-          {meta.description}
-        </p>
-      </div>
-      <div className="grid max-w-6xl grid-cols-1 gap-3 px-4 py-10 sm:grid-cols-2 lg:grid-cols-3 mx-auto">
-        {type == "Simulations" && (
+      {/* Header — simple scroll reveal */}
+      <ScrollReveal>
+        <div className="mx-auto max-w-2xl px-4 text-center">
+          <p className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase">
+            {meta.label}
+          </p>
+          <h1 className="font-heading mt-3 text-3xl font-black tracking-tight leading-tight md:text-4xl">
+            Explore {type}
+          </h1>
+          <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+            {meta.description}
+          </p>
+        </div>
+      </ScrollReveal>
+
+      {/* Cards — stagger each card individually */}
+      <motion.div
+        className="grid max-w-6xl grid-cols-1 gap-3 px-4 py-10 sm:grid-cols-2 lg:grid-cols-3 mx-auto"
+        variants={gridVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-8%" }}
+      >
+        {type === "Simulations" && (
           <>
-            <SimulationsCard />
-            <SimulationsCard />
-            <SimulationsCard />
+            <motion.div variants={itemVariants}><SimulationsCard /></motion.div>
+            <motion.div variants={itemVariants}><SimulationsCard /></motion.div>
+            <motion.div variants={itemVariants}><SimulationsCard /></motion.div>
           </>
         )}
-        {type == "Derivations" && (
+        {type === "Derivations" && (
           <>
-            <div className="col-span-full"><DerivationsCard /></div>
-            <div className="col-span-full"><DerivationsCard /></div>
-            <div className="col-span-full"><DerivationsCard /></div>
+            <motion.div variants={itemVariants} className="col-span-full"><DerivationsCard /></motion.div>
+            <motion.div variants={itemVariants} className="col-span-full"><DerivationsCard /></motion.div>
+            <motion.div variants={itemVariants} className="col-span-full"><DerivationsCard /></motion.div>
           </>
         )}
-        {type == "Tech" && (
+        {type === "Tech" && (
           <>
-            <TechCard />
-            <TechCard />
-            <TechCard />
+            <motion.div variants={itemVariants}><TechCard /></motion.div>
+            <motion.div variants={itemVariants}><TechCard /></motion.div>
+            <motion.div variants={itemVariants}><TechCard /></motion.div>
           </>
         )}
-      </div>
+      </motion.div>
     </section>
   );
 };

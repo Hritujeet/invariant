@@ -1,13 +1,66 @@
+"use client";
+
 import { ArrowUpRight, Binary, Code2, PenLine } from "lucide-react";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 const card =
   "relative rounded-xl border border-border p-6 overflow-hidden transition-all duration-300";
 
+// --- Animation variants ---
+
+// The parent container: it orchestrates the children
+// staggerChildren = each child starts 0.08s after the previous one
+const gridVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.07,
+      delayChildren: 0.04,
+    },
+  },
+};
+
+// Every card uses this same variant. The parent's stagger applies the delay automatically.
+const cardVariants = {
+  hidden: { opacity: 0, y: 16, scale: 0.97, filter: "blur(5px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      // Per-property transitions: scale gets a spring, the rest use the bezier
+      scale:   { type: "spring" as const, stiffness: 260, damping: 22 },
+      opacity: { duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] as const },
+      y:       { duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] as const },
+      filter:  { duration: 0.45, ease: [0.21, 0.47, 0.32, 0.98] as const },
+    },
+  },
+};
+
+// The quote fades in from slightly above, a little slower
+const quoteVariants = {
+  hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.65, ease: [0.21, 0.47, 0.32, 0.98] as const },
+  },
+};
+
 const BentoGrid = () => {
   return (
     <section className="relative mx-auto max-w-6xl px-4 pb-8 md:pb-12">
-      <div className="quote mx-auto flex max-w-5xl flex-col gap-3 md:px-8">
+      {/* Quote — simple standalone fade-in */}
+      <motion.div
+        className="quote mx-auto flex max-w-5xl flex-col gap-3 md:px-8"
+        variants={quoteVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-10%" }}
+      >
         <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.02] tracking-tight text-transparent bg-clip-text bg-linear-to-r from-foreground to-zinc-600">
           The universe is a computer, but it&apos;s not a computer made of
           silicon, it&apos;s a computer made of the laws of physics.
@@ -15,11 +68,19 @@ const BentoGrid = () => {
         <span className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
           — Seth Lloyd · Programming the Universe
         </span>
-      </div>
+      </motion.div>
 
-      <div className="mt-10 grid grid-cols-1 gap-3 lg:grid-cols-5">
+      {/* Grid — parent controls stagger, children just declare their state */}
+      <motion.div
+        className="mt-10 grid grid-cols-1 gap-3 lg:grid-cols-5"
+        variants={gridVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-8%" }}
+      >
         {/* About card */}
-        <article
+        <motion.article
+          variants={cardVariants}
           className={`${card} hover:border-primary/30 duration-300 hover:-translate-y-0.5 flex flex-col justify-between lg:col-span-3 lg:row-span-3 bg-muted/50 hover:bg-muted group h-full min-h-90`}
         >
           <div className="flex items-start justify-between">
@@ -74,80 +135,86 @@ const BentoGrid = () => {
               ))}
             </div>
           </div>
-        </article>
+        </motion.article>
 
-        <Link
-          href="/derivations"
-          className={`${card} group bg-muted/50 hover:bg-muted flex flex-col justify-between gap-8 lg:col-span-2 hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
-        >
-          <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          <div className="relative flex items-start justify-between gap-3">
-            <span className="flex size-9 items-center justify-center rounded-lg border border-border bg-muted/50 transition-colors group-hover:border-primary/40 group-hover:bg-primary/10">
-              <PenLine className="size-4" strokeWidth={1.75} />
-            </span>
-            <ArrowUpRight className="size-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
-          </div>
-          <div className="relative">
-            <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
-              /derivations
-            </p>
-            <h3 className="mt-1 font-heading text-lg font-normal tracking-[-0.01em]">
-              Derivations on paper
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Handwritten derivations. From expressions to problems, all in one place - physics and mathematics
-            </p>
-          </div>
-        </Link>
+        <motion.div variants={cardVariants} className="lg:col-span-2 h-full">
+          <Link
+            href="/derivations"
+            className={`${card} group bg-muted/50 hover:bg-muted flex flex-col justify-between gap-8 h-full hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
+          >
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="relative flex items-start justify-between gap-3">
+              <span className="flex size-9 items-center justify-center rounded-lg border border-border bg-muted/50 transition-colors group-hover:border-primary/40 group-hover:bg-primary/10">
+                <PenLine className="size-4" strokeWidth={1.75} />
+              </span>
+              <ArrowUpRight className="size-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
+            </div>
+            <div className="relative">
+              <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
+                /derivations
+              </p>
+              <h3 className="mt-1 font-heading text-lg font-normal tracking-[-0.01em]">
+                Derivations on paper
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Handwritten derivations. From expressions to problems, all in one place - physics and mathematics
+              </p>
+            </div>
+          </Link>
+        </motion.div>
 
-        <Link
-          href="/simulations"
-          className={`${card} group bg-muted/50 hover:bg-muted flex flex-col justify-between gap-8 lg:col-span-2 hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
-        >
-          <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          <div className="relative flex items-start justify-between gap-3">
-            <span className="flex size-9 items-center justify-center rounded-lg border border-border bg-muted/50 transition-colors group-hover:border-primary/40 group-hover:bg-primary/10">
-              <Binary className="size-4" strokeWidth={1.75} />
-            </span>
-            <ArrowUpRight className="size-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
-          </div>
-          <div className="relative">
-            <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
-              /simulations
-            </p>
-            <h3 className="mt-1 font-heading text-lg font-normal tracking-[-0.01em]">
-              Equations that move
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Taking physics from paper to code and from code to inetractive simulations.
-            </p>
-          </div>
-        </Link>
+        <motion.div variants={cardVariants} className="lg:col-span-2 h-full">
+          <Link
+            href="/simulations"
+            className={`${card} group bg-muted/50 hover:bg-muted flex flex-col justify-between gap-8 h-full hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
+          >
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="relative flex items-start justify-between gap-3">
+              <span className="flex size-9 items-center justify-center rounded-lg border border-border bg-muted/50 transition-colors group-hover:border-primary/40 group-hover:bg-primary/10">
+                <Binary className="size-4" strokeWidth={1.75} />
+              </span>
+              <ArrowUpRight className="size-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
+            </div>
+            <div className="relative">
+              <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
+                /simulations
+              </p>
+              <h3 className="mt-1 font-heading text-lg font-normal tracking-[-0.01em]">
+                Equations that move
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                Taking physics from paper to code and from code to interactive simulations.
+              </p>
+            </div>
+          </Link>
+        </motion.div>
 
-        <Link
-          href="/tech"
-          className={`${card} group bg-muted/50 hover:bg-muted flex flex-col justify-between gap-8 lg:col-span-2 hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
-        >
-          <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-          <div className="relative flex items-start justify-between gap-3">
-            <span className="flex size-9 items-center justify-center rounded-lg border border-border bg-muted/50 transition-colors group-hover:border-primary/40 group-hover:bg-primary/10">
-              <Code2 className="size-4" strokeWidth={1.75} />
-            </span>
-            <ArrowUpRight className="size-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
-          </div>
-          <div className="relative">
-            <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
-              /tech
-            </p>
-            <h3 className="mt-1 font-heading text-lg font-normal tracking-[-0.01em]">
-              Systems from scratch
-            </h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              From usual scripts to full stack web apps - I code it all with a nice cup of coffee.
-            </p>
-          </div>
-        </Link>
-      </div>
+        <motion.div variants={cardVariants} className="lg:col-span-2 h-full">
+          <Link
+            href="/tech"
+            className={`${card} group bg-muted/50 hover:bg-muted flex flex-col justify-between gap-8 h-full hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
+          >
+            <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <div className="relative flex items-start justify-between gap-3">
+              <span className="flex size-9 items-center justify-center rounded-lg border border-border bg-muted/50 transition-colors group-hover:border-primary/40 group-hover:bg-primary/10">
+                <Code2 className="size-4" strokeWidth={1.75} />
+              </span>
+              <ArrowUpRight className="size-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
+            </div>
+            <div className="relative">
+              <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
+                /tech
+              </p>
+              <h3 className="mt-1 font-heading text-lg font-normal tracking-[-0.01em]">
+                Systems from scratch
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                From usual scripts to full stack web apps - I code it all with a nice cup of coffee.
+              </p>
+            </div>
+          </Link>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

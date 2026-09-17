@@ -8,7 +8,7 @@ import JosephineTeaser from "@/components/site/josephine-teaser";
 
 export default function Home() {
   return (
-    <section className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 overflow-hidden">
       <Hero />
       <BentoGrid />
       <JosephineTeaser />
@@ -18,6 +18,6 @@ export default function Home() {
       <TechSection />
       <CardContainer type="Tech" />
       <CTA />
-    </section>
+    </div>
   );
 }

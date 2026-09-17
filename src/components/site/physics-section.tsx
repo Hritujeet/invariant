@@ -2,6 +2,7 @@ import fg_img from "@/images/physics-handwritten-1.jpeg"
 import bg_img from "@/images/physics-handwritten-bg-1.jpeg"
 import Image from "next/image"
 import Link from "next/link"
+import { ScrollReveal } from "../ui/scroll-reveal"
 
 const PhysicsSection = () => {
   return (
@@ -9,7 +10,7 @@ const PhysicsSection = () => {
       <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16 lg:gap-24">
 
         {/* Image column — strictly contained, never overflows */}
-        <div className="w-full md:w-1/2 flex items-center justify-center">
+        <ScrollReveal delay={0.1} className="w-full md:w-1/2 flex items-center justify-center">
           <div
             className="group relative cursor-pointer"
             style={{ width: "min(300px, 78vw)", aspectRatio: "3/4" }}
@@ -55,41 +56,49 @@ const PhysicsSection = () => {
             {/* Glow on hover */}
             <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none [background:radial-gradient(ellipse_at_center,hsl(var(--primary)/0.12)_0%,transparent_70%)]" />
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Text column */}
         <div className="w-full md:w-1/2 flex flex-col gap-5 text-center md:text-left">
 
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-[2.6rem] lg:text-5xl font-bold tracking-tight leading-[1.15]">
-            Expressions and solutions derived from{" "}
-            first principles
-          </h2>
+          <ScrollReveal delay={0.1}>
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-[2.6rem] lg:text-5xl font-bold tracking-tight leading-[1.15]">
+              Expressions and solutions derived from{" "}
+              first principles
+            </h2>
+          </ScrollReveal>
 
-          <p className="text-sm sm:text-base leading-relaxed text-muted-foreground max-w-md mx-auto md:mx-0">
-            This is my notebook on the internet where I derive solutions and
-            expressions from scratch, followed by detailed explanations and key
-            notes. And guess what — they are handwritten. A derivation may even
-            be linked to an interactive simulation.
-          </p>
+          <ScrollReveal delay={0.2}>
+            <p className="text-sm sm:text-base leading-relaxed text-muted-foreground max-w-md mx-auto md:mx-0">
+              This is my notebook on the internet where I derive solutions and
+              expressions from scratch, followed by detailed explanations and key
+              notes. And guess what — they are handwritten. A derivation may even
+              be linked to an interactive simulation.
+            </p>
+          </ScrollReveal>
 
-          <span className="text-xs text-muted-foreground/60 italic">
-            PS: I am not a big fan of my handwriting.
-          </span>
+          <ScrollReveal delay={0.3}>
+            <span className="text-xs text-muted-foreground/60 italic block">
+              PS: I am not a big fan of my handwriting.
+            </span>
+          </ScrollReveal>
 
-          <div className="flex gap-3 justify-center md:justify-start mt-2">
-            <Link
-              href="/derivations"
-              className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/85 hover:scale-[1.03] active:scale-[0.98]"
-            >
-              Read derivations
-            </Link>
-            <Link
-              href="/simulations"
-              className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-5 py-2 text-sm font-medium text-secondary-foreground transition-all hover:bg-secondary/80 hover:scale-[1.03] active:scale-[0.98]"
-            >
-              Simulations
-            </Link>
-          </div>
+          <ScrollReveal delay={0.4}>
+            <div className="flex gap-3 justify-center md:justify-start mt-2">
+              <Link
+                href="/derivations"
+                className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2 text-sm font-medium text-primary-foreground transition-all hover:bg-primary/85 hover:scale-[1.03] active:scale-[0.98]"
+              >
+                Read derivations
+              </Link>
+              <Link
+                href="/simulations"
+                className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-5 py-2 text-sm font-medium text-secondary-foreground transition-all hover:bg-secondary/80 hover:scale-[1.03] active:scale-[0.98]"
+              >
+                Simulations
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
 
       </div>

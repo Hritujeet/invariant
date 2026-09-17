@@ -49,7 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem
           disableTransitionOnChange
         >
-          <NextTopLoader showSpinner={false} color="indigo" height={1.5} />
+          {/* <NextTopLoader showSpinner={false} color="blue" height={1.5} /> */}
           {children}
         </ThemeProvider>
       </body>
