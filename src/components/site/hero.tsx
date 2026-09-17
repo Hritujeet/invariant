@@ -7,8 +7,8 @@ import Atwood from "../simulations/atwood";
 
 export default function Hero() {
   return (
-    <section className="relative mx-auto max-w-6xl h-screen flex flex-col justify-center">
-      <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
+    <section className="relative mx-auto max-w-6xl min-h-screen flex flex-col justify-center py-16 sm:py-20">
+      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
         {/* Hero Content */}
         <div className="flex flex-col lg:col-span-7">
           <div className="mb-6 flex items-center gap-2 font-mono text-xs text-muted-foreground">
@@ -26,13 +26,13 @@ export default function Hero() {
             <span className="text-foreground/70">Software that ships.</span>
           </h1>
 
-          <p className="mt-7 max-w-lg text-base leading-[1.75] text-muted-foreground sm:text-[1.05rem]">
+          <p className="mt-5 max-w-lg text-base leading-[1.75] text-muted-foreground sm:text-[1.05rem]">
             I derive classical mechanics in a notebook, then I run the same
             system as a simulation. I also build web apps. That&apos;s most of
             what I do.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-7 flex flex-wrap gap-3">
             <Link
               href="/simulations"
               className={`px-4 py-4 ${buttonVariants({ variant: "default" })}`}
@@ -55,8 +55,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Atwood Simulation — hidden on mobile to prevent h-screen overflow */}
-        <div className="hidden lg:block lg:col-span-5 w-full">
+        {/* Atwood Simulation — visible on all screen sizes */}
+        <div className="w-full lg:col-span-5">
           <Atwood />
         </div>
       </div>

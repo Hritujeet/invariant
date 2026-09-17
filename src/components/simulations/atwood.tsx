@@ -152,7 +152,7 @@ export default function Atwood() {
       <div
         ref={wrapRef}
         className="relative w-full overflow-hidden rounded-xl border border-border"
-        style={{ height: "clamp(220px, 42vh, 360px)" }}
+        style={{ height: "clamp(200px, 36vw, 360px)" }}
       >
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
       </div>
