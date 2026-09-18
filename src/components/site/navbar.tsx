@@ -1,11 +1,11 @@
 "use client";
 
-import { LogIn, Menu, SquareChevronRight, User, X } from "lucide-react";
+import { Show, SignOutButton } from "@clerk/nextjs";
+import { LogIn, LogOut, Menu, SquareChevronRight, User, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { buttonVariants } from "../ui/button";
-import { ThemeToggle } from "../ui/theme-toggle";
 
 const links = [
   { href: "/tech", label: "tech" },
@@ -65,31 +65,43 @@ const Navbar = () => {
           </ul>
 
           <div className="flex items-center gap-1 sm:gap-1.5 ml-auto md:ml-4 mr-4">
-            <ThemeToggle />
-            {/* <Link
-              href="/admin"
-              className={buttonVariants({ variant: "ghost", size: "icon-sm", className: "rounded-full" })}
-              aria-label="Admin"
-            >
-              <SquareChevronRight className="size-4" />
-            </Link>
-            <Link
-              href="/profile"
-              className={buttonVariants({ variant: "ghost", size: "icon-sm", className: "rounded-full" })}
-              aria-label="Profile"
-            >
-              <User className="size-4" />
-            </Link> */}
-            <Link
-              href="/sign-in"
-              className={buttonVariants({ variant: "default", className: "rounded-full" })}
-              aria-label="Sign In"
-            >
-              <LogIn className="size-3.5" />
-            </Link>
+            <Show when={"signed-in"}>
+              <Link
+                href="/admin"
+                className={buttonVariants({ variant: "ghost", size: "icon-sm", className: "rounded-full ring-1 ring-border/0 hover:ring-border/60 transition-all" })}
+                aria-label="Admin panel"
+              >
+                <SquareChevronRight className="size-4" />
+              </Link>
+              <Link
+                href="/profile"
+                className={buttonVariants({ variant: "ghost", size: "icon-sm", className: "rounded-full ring-1 ring-border/0 hover:ring-border/60 transition-all" })}
+                aria-label="Profile"
+              >
+                <User className="size-4" />
+              </Link>
+              <SignOutButton>
+                <button
+                  className={buttonVariants({ variant: "ghost", size: "icon-sm", className: "rounded-full ring-1 ring-border/0 hover:ring-destructive/50 hover:text-destructive hover:bg-destructive/10 transition-all" })}
+                  aria-label="Sign out"
+                >
+                  <LogOut className="size-4" />
+                </button>
+              </SignOutButton>
+            </Show>
+            <Show when={"signed-out"}>
+              <Link
+                href="/sign-in"
+                className={buttonVariants({ variant: "default", className: "rounded-full gap-1.5" })}
+                aria-label="Sign In"
+              >
+                <LogIn className="size-3.5" />
+                <span className="text-xs font-medium">Sign in</span>
+              </Link>
+            </Show>
             <button
               onClick={() => setOpen(!open)}
-              className="md:hidden flex items-center justify-center rounded-full p-1.5 text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+              className="md:hidden flex items-center justify-center rounded-full p-1.5 text-muted-foreground ring-1 ring-border/0 hover:ring-border/60 hover:bg-muted hover:text-foreground transition-all"
               aria-label="Toggle menu"
             >
               {open ? <X className="size-4" /> : <Menu className="size-4" />}

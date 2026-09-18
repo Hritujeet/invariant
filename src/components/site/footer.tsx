@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { ModeToggle } from "@/components/ui/theme-toggle";
 
 const navLinks = [
     { href: "/", label: "Home" },
@@ -43,18 +44,21 @@ export function Footer() {
             <div className="flex items-center justify-between gap-4 border-t py-4 text-muted-foreground text-sm">
                 <p>&copy; {new Date().getFullYear()} invariant</p>
 
-                <p className="inline-flex items-center gap-1">
-                    <span>Built by</span>
-                    <a
-                        aria-label="x/twitter"
-                        className="inline-flex items-center gap-1 text-foreground/80 hover:text-foreground hover:underline"
-                        href={"https://www.linkedin.com/in/hritujeet-sharma-797ba7281/"}
-                        rel="noreferrer"
-                        target="_blank"
-                    >
-                        Hritujeet
-                    </a>
-                </p>
+                <div className="flex items-center gap-4">
+                    <ModeToggle />
+                    <p className="inline-flex items-center gap-1">
+                        <span>Built by</span>
+                        <a
+                            aria-label="x/twitter"
+                            className="inline-flex items-center gap-1 text-foreground/80 hover:text-foreground hover:underline"
+                            href={"https://www.linkedin.com/in/hritujeet-sharma-797ba7281/"}
+                            rel="noreferrer"
+                            target="_blank"
+                        >
+                            Hritujeet
+                        </a>
+                    </p>
+                </div>
             </div>
         </footer>
     );

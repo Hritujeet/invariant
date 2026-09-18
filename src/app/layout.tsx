@@ -1,8 +1,8 @@
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { cn } from "@/lib/utils";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
-import { DM_Sans, Geist, Geist_Mono, Roboto_Slab, Inter } from "next/font/google";
-import NextTopLoader from "nextjs-toploader";
+import { DM_Sans, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const dmSansHeading = DM_Sans({ subsets: ['latin'], variable: '--font-heading' });
@@ -49,8 +49,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           enableSystem
           disableTransitionOnChange
         >
-          {/* <NextTopLoader showSpinner={false} color="blue" height={1.5} /> */}
-          {children}
+          <ClerkProvider>
+            {children}
+          </ClerkProvider>
         </ThemeProvider>
       </body>
     </html>

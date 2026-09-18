@@ -22,11 +22,11 @@ export function ScrollReveal({
   delay = 0,
   yOffset = 10,
   blur = "5px",
-  duration = 0.5,
+  duration = 0.4,
   mode = "scroll",
 }: ScrollRevealProps) {
   const initial = { opacity: 0, y: yOffset, filter: `blur(${blur})` };
-  const target  = { opacity: 1, y: 0,       filter: "blur(0px)"      };
+  const target = { opacity: 1, y: 0, filter: "blur(0px)" };
 
   const transition = {
     duration,
