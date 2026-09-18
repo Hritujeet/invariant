@@ -1,7 +1,6 @@
 import { relations } from "drizzle-orm/_relations";
 import { AnyPgColumn, boolean, integer, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core";
 import { pgTable } from "drizzle-orm/pg-core/table";
-import { user } from "./auth-schema";
 
 /*
 Tables
@@ -32,8 +31,7 @@ export const blogTable = pgTable("blog", {
 
 export const blogLikeTable = pgTable("blog_like", {
     blogId: uuid("blog_id").references(() => blogTable.id),
-    // Better Auth user id is text
-    userId: text("user_id").references(() => user.id),
+    clerkUserId: text("clerk_user_id").notNull(),
     createdAt: timestamp("created_at").defaultNow().notNull(),
 })
 
@@ -80,8 +78,7 @@ export const projectsTable = pgTable("projects", {
 export const commentTable = pgTable("comment", {
     id: uuid().notNull().unique().primaryKey(),
     comment: text("comment").notNull(),
-    // Better Auth user id is text
-    authorId: text("author_id").references(() => user.id),
+    clerkUserId: text("clerk_user_id").notNull(),
     blogId: uuid("blog_id").references(() => blogTable.id),
     derivationId: uuid("derivation_id").references(() => derivationsTable.id),
     devlogId: uuid("devlog_id").references(() => devlogs.id),
@@ -114,10 +111,6 @@ export const blogLikeRelations = relations(blogLikeTable, ({ one }) => ({
         fields: [blogLikeTable.blogId],
         references: [blogTable.id],
     }),
-    user: one(user, {
-        fields: [blogLikeTable.userId],
-        references: [user.id],
-    }),
 }))
 
 export const blogCategoryRelations = relations(blogCategoryTable, ({ one }) => ({
@@ -143,10 +136,6 @@ export const commentRelations = relations(commentTable, ({ one, many }) => ({
     devlog: one(devlogs, {
         fields: [commentTable.devlogId],
         references: [devlogs.id],
-    }),
-    user: one(user, {
-        fields: [commentTable.authorId],
-        references: [user.id],
     }),
     parentComment: one(commentTable, {
         fields: [commentTable.replyTo],
