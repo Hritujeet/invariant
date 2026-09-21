@@ -1,0 +1,78 @@
+"use client"
+
+import * as React from "react"
+import Link from "next/link"
+import { useUser } from "@clerk/nextjs"
+
+import { NavMain } from "@/components/nav-main"
+import { NavSecondary } from "@/components/nav-secondary"
+import { NavUser } from "@/components/nav-user"
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar"
+import {
+  LayoutDashboardIcon,
+  FileTextIcon,
+  FlaskConicalIcon,
+  BookOpenIcon,
+  ScrollTextIcon,
+  ExternalLinkIcon,
+} from "lucide-react"
+
+const navMain = [
+  { title: "Overview",     url: "/admin",             icon: <LayoutDashboardIcon /> },
+  { title: "Blog Posts",   url: "/admin/posts",        icon: <FileTextIcon />       },
+  { title: "Simulations",  url: "/admin/simulations",  icon: <FlaskConicalIcon />   },
+  { title: "Derivations",  url: "/admin/derivations",  icon: <BookOpenIcon />       },
+  { title: "Devlogs",      url: "/admin/devlogs",      icon: <ScrollTextIcon />     },
+]
+
+const navSecondary = [
+  { title: "Back to Site", url: "/", icon: <ExternalLinkIcon /> },
+]
+
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { user } = useUser()
+
+  const clerkUser = {
+    name: user?.fullName ?? user?.username ?? "Admin",
+    email: user?.primaryEmailAddress?.emailAddress ?? "",
+    avatar: user?.imageUrl ?? "",
+  }
+
+  return (
+    <Sidebar collapsible="offcanvas" {...props}>
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton
+              className="data-[slot=sidebar-menu-button]:p-1.5!"
+              render={<Link href="/admin" />}
+            >
+              <span className="flex size-5 items-center justify-center rounded-sm bg-primary text-primary-foreground text-xs font-bold select-none">
+                ∂
+              </span>
+              <span className="text-base font-semibold tracking-tight">invariant</span>
+              <span className="ml-1 text-xs font-normal text-muted-foreground">admin</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
+
+      <SidebarContent>
+        <NavMain items={navMain} />
+        <NavSecondary items={navSecondary} className="mt-auto" />
+      </SidebarContent>
+
+      <SidebarFooter>
+        <NavUser user={clerkUser} />
+      </SidebarFooter>
+    </Sidebar>
+  )
+}
