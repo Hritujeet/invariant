@@ -8,11 +8,11 @@ import { useState } from "react";
 import { buttonVariants } from "../ui/button";
 
 const links = [
-  { href: "/tech", label: "tech" },
   { href: "/simulations", label: "simulations", flagship: true },
   { href: "/derivations", label: "derivations" },
-  { href: "/blog", label: "blog" },
   { href: "/josephine", label: "josephine", flagship: true },
+  { href: "/arxiv", label: "arxiv" },
+  { href: "/papers", label: "papers" },
 ];
 
 const Navbar = () => {
@@ -24,7 +24,7 @@ const Navbar = () => {
       <div className="relative">
         <nav
           className="relative flex items-center gap-1 rounded-full border border-border
-            bg-background/80 py-1.5 pl-5 pr-2 backdrop-blur-md shadow-sm"
+            bg-background/50 py-1.5 pl-5 pr-2 backdrop-blur-md shadow-sm"
         >
           {/* Top subtle refraction highlight */}
           <span

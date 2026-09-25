@@ -27,7 +27,6 @@ import {
 
 const navMain = [
   { title: "Overview",     url: "/admin",             icon: <LayoutDashboardIcon /> },
-  { title: "Blog Posts",   url: "/admin/posts",        icon: <FileTextIcon />       },
   { title: "Simulations",  url: "/admin/simulations",  icon: <FlaskConicalIcon />   },
   { title: "Derivations",  url: "/admin/derivations",  icon: <BookOpenIcon />       },
   { title: "Devlogs",      url: "/admin/devlogs",      icon: <ScrollTextIcon />     },

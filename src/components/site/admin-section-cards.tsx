@@ -15,14 +15,6 @@ import { blogData, simulationsData, derivationsData, devlogsData, usersData } fr
 
 const stats = [
   {
-    label: "Blog Posts",
-    icon: <FileTextIcon className="size-3.5" />,
-    data: blogData,
-    href: "/admin/posts",
-    footnote: "Articles & essays",
-    renderer: "Markdown + MDX",
-  },
-  {
     label: "Simulations",
     icon: <FlaskConicalIcon className="size-3.5" />,
     data: simulationsData,

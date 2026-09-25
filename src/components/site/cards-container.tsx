@@ -99,13 +99,6 @@ const CardContainer = ({ type }: Props) => {
             <motion.div variants={itemVariants} className="col-span-full"><DerivationsCard /></motion.div>
           </>
         )}
-        {type === "Tech" && (
-          <>
-            <motion.div variants={itemVariants}><TechCard /></motion.div>
-            <motion.div variants={itemVariants}><TechCard /></motion.div>
-            <motion.div variants={itemVariants}><TechCard /></motion.div>
-          </>
-        )}
       </motion.div>
     </section>
   );

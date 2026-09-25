@@ -30,7 +30,7 @@ const SimulationsCard = () => {
 
         <CardContent className="flex flex-1 flex-col gap-3 p-4">
           <div>
-            <CardTitle className="text-base font-semibold tracking-tight transition-colors group-hover:text-primary">
+            <CardTitle className="text-base font-semibold tracking-tight">
               Simple Atwood System
             </CardTitle>
             <CardDescription className="mt-1 text-xs leading-relaxed">

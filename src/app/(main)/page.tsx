@@ -15,8 +15,6 @@ export default function Home() {
       <CardContainer type="Simulations" />
       <PhysicsSection />
       <CardContainer type="Derivations" />
-      <TechSection />
-      <CardContainer type="Tech" />
       <CTA />
     </div>
   );

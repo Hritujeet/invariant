@@ -1,13 +1,12 @@
 import AdminHeader from "@/components/site/admin-header"
 import { AdminSectionCards } from "@/components/site/admin-section-cards"
 import { DataTable } from "@/components/data-table"
-import { blogData, simulationsData, derivationsData, devlogsData, usersData } from "./data"
+import { simulationsData, derivationsData, devlogsData, usersData } from "./data"
 import { buttonVariants } from "@/components/ui/button"
 import Link from "next/link"
-import { PlusIcon, FileTextIcon, FlaskConicalIcon, BookOpenIcon, ScrollTextIcon, UsersIcon, ArrowRightIcon } from "lucide-react"
+import { PlusIcon, FlaskConicalIcon, BookOpenIcon, ScrollTextIcon, UsersIcon, ArrowRightIcon } from "lucide-react"
 
 const sections = [
-  { label: "Blog Posts",   icon: <FileTextIcon  className="size-4" />, data: blogData,         href: "/admin/posts",       newHref: "/admin/posts/new",       btnLabel: "New Post"       },
   { label: "Simulations",  icon: <FlaskConicalIcon className="size-4" />, data: simulationsData, href: "/admin/simulations",  newHref: "/admin/simulations/new", btnLabel: "New Simulation" },
   { label: "Derivations",  icon: <BookOpenIcon  className="size-4" />, data: derivationsData,  href: "/admin/derivations",  newHref: "/admin/derivations/new", btnLabel: "New Derivation" },
   { label: "Devlogs",      icon: <ScrollTextIcon className="size-4" />, data: devlogsData,      href: "/admin/devlogs",      newHref: "/admin/devlogs/new",     btnLabel: "New Devlog"     },
