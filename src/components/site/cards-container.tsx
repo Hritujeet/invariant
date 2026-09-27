@@ -61,25 +61,28 @@ const CardContainer = ({ type }: Props) => {
   const meta = typeMeta[type];
 
   return (
-    <section className="simulations-container mx-auto mt-20 md:mt-28">
+    <section className="simulations-container mx-auto">
       {/* Header — simple scroll reveal */}
-      <ScrollReveal>
-        <div className="mx-auto max-w-2xl px-4 text-center">
-          <p className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase">
-            {meta.label}
-          </p>
-          <h1 className="font-heading mt-3 text-3xl font-black tracking-tight leading-tight md:text-4xl">
-            Explore {type}
-          </h1>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-            {meta.description}
-          </p>
-        </div>
-      </ScrollReveal>
+      {/* Only show header if it's NOT simulations, so we don't duplicate headers */}
+      {type !== "Simulations" && (
+        <ScrollReveal>
+          <div className="mx-auto max-w-2xl px-4 text-center mt-20 md:mt-28">
+            <p className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase">
+              {meta.label}
+            </p>
+            <h1 className="font-heading mt-3 text-3xl font-black tracking-tight leading-tight md:text-4xl">
+              Explore {type}
+            </h1>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+              {meta.description}
+            </p>
+          </div>
+        </ScrollReveal>
+      )}
 
       {/* Cards — stagger each card individually */}
       <motion.div
-        className="grid max-w-6xl grid-cols-1 gap-3 px-4 py-10 sm:grid-cols-2 lg:grid-cols-3 mx-auto"
+        className="grid max-w-6xl grid-cols-1 gap-4 px-4 py-10 sm:grid-cols-2 lg:grid-cols-3 mx-auto auto-rows-fr"
         variants={gridVariants}
         initial="hidden"
         whileInView="visible"
@@ -87,16 +90,16 @@ const CardContainer = ({ type }: Props) => {
       >
         {type === "Simulations" && (
           <>
-            <motion.div variants={itemVariants}><SimulationsCard /></motion.div>
-            <motion.div variants={itemVariants}><SimulationsCard /></motion.div>
-            <motion.div variants={itemVariants}><SimulationsCard /></motion.div>
+            <motion.div variants={itemVariants} className="h-full"><SimulationsCard /></motion.div>
+            <motion.div variants={itemVariants} className="h-full"><SimulationsCard /></motion.div>
+            <motion.div variants={itemVariants} className="h-full"><SimulationsCard /></motion.div>
           </>
         )}
         {type === "Derivations" && (
           <>
-            <motion.div variants={itemVariants} className="col-span-full"><DerivationsCard /></motion.div>
-            <motion.div variants={itemVariants} className="col-span-full"><DerivationsCard /></motion.div>
-            <motion.div variants={itemVariants} className="col-span-full"><DerivationsCard /></motion.div>
+            <motion.div variants={itemVariants} className="col-span-full h-full"><DerivationsCard /></motion.div>
+            <motion.div variants={itemVariants} className="col-span-full h-full"><DerivationsCard /></motion.div>
+            <motion.div variants={itemVariants} className="col-span-full h-full"><DerivationsCard /></motion.div>
           </>
         )}
       </motion.div>

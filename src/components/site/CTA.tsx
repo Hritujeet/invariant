@@ -4,43 +4,49 @@ import { ScrollReveal } from "../ui/scroll-reveal";
 
 const CTA = () => {
   return (
-    <section className="mx-auto w-full px-4 py-24 mb-12">
-      <div className="relative flex flex-col items-center justify-center gap-6 overflow-hidden bg-muted/50 p-12 text-center">
+    <section className="mx-auto w-full px-4 mb-20">
+      <div className="flex flex-col items-center rounded-[2rem] border border-border/40 bg-muted/10 px-6 py-16 text-center backdrop-blur-sm sm:px-12 sm:py-20">
 
         <ScrollReveal delay={0.1}>
-          <h1 className="font-heading text-4xl font-semibold leading-tight tracking-[-0.02em] md:text-5xl">
+          <h2 className="font-heading text-3xl font-medium leading-tight tracking-tight md:text-5xl">
             Still curious?
-          </h1>
+          </h2>
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <p className="max-w-md text-base leading-relaxed text-muted-foreground">
-            You've made it to the end. There's plenty more to explore—read some derivations, play with a simulation, or know about the guy in the chair.
+          <p className="mx-auto mt-4 max-w-md text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Read some derivations, play with a simulation, or learn about the guy in the chair.
           </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.3}>
-          <div className="mt-4 flex flex-wrap justify-center gap-3">
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-3">
             <Link
               href="/simulations"
-              className={`rounded-full px-6 py-5 ${buttonVariants({ variant: "default" })}`}
+              className={`rounded-full px-8 transition-transform hover:scale-105 active:scale-95 ${buttonVariants({ variant: "default" })}`}
             >
               Run a simulation
             </Link>
+
             <Link
               href="/derivations"
-              className={`rounded-full px-6 py-5 ${buttonVariants({ variant: "secondary" })}`}
+              className={`rounded-full px-8 transition-transform hover:scale-105 active:scale-95 ${buttonVariants({ variant: "secondary" })}`}
             >
               Read derivations
             </Link>
+
             <Link
               href="/about"
-              className={`rounded-full px-6 py-5 ${buttonVariants({ variant: "default" })}`}
+              className={`group rounded-full px-6 ${buttonVariants({ variant: "ghost" })}`}
             >
-              Learn More
+              Learn more
+              <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
             </Link>
           </div>
         </ScrollReveal>
+
       </div>
     </section>
   );
