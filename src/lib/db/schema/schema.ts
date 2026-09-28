@@ -16,7 +16,6 @@ export const derivationsTable = pgTable("derivation", {
     expression: varchar("expression", { length: 500 }).notNull(),
     description: varchar("description", { length: 500 }).notNull(),
     pdf: varchar("pdf", { length: 500 }).notNull(),
-    img: varchar("images", { length: 500 }).notNull(),
     content: text("content").notNull(),
     createdAt: timestamp("created_at").defaultNow().notNull(),
     updatedAt: timestamp("updated_at").defaultNow().notNull().$onUpdate(() => new Date()),
