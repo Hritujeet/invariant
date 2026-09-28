@@ -1,9 +1,6 @@
 import AdminHeader from "@/components/site/admin-header"
 import { DataTable } from "@/components/data-table"
 import { usersData } from "@/app/admin/data"
-import { UserPlusIcon } from "lucide-react"
-import { buttonVariants } from "@/components/ui/button"
-import Link from "next/link"
 
 export default function UsersPage() {
   return (
@@ -19,10 +16,6 @@ export default function UsersPage() {
                   {usersData.length} total · {usersData.filter(d => d.status === "Active").length} active
                 </p>
               </div>
-              <Link href="/admin/users/invite" className={buttonVariants({ size: "sm" })}>
-                <UserPlusIcon />
-                Invite User
-              </Link>
             </div>
             <DataTable data={usersData} />
           </div>

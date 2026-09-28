@@ -34,8 +34,6 @@ const sections = [
     icon: <UsersIcon className="size-4" />,
     data: usersData,
     href: "/admin/users",
-    newHref: "/admin/users/invite",
-    btnLabel: "Invite User",
   },
 ];
 
@@ -76,13 +74,15 @@ export default function AdminPage() {
                     >
                       View all
                     </Link>
-                    <Link
-                      href={newHref}
-                      className={buttonVariants({ size: "sm" })}
-                    >
-                      <PlusIcon />
-                      {btnLabel}
-                    </Link>
+                    {newHref && btnLabel && (
+                      <Link
+                        href={newHref}
+                        className={buttonVariants({ size: "sm" })}
+                      >
+                        <PlusIcon />
+                        {btnLabel}
+                      </Link>
+                    )}
                   </div>
                 </div>
                 <DataTable data={data.slice(0, 5)} />
