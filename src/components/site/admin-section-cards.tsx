@@ -1,27 +1,21 @@
-"use client"
+"use client";
 
-import { Badge } from "@/components/ui/badge"
+import { derivationsData, devlogsData, usersData } from "@/app/admin/data";
 import {
-  Card,
-  CardAction,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { TrendingUpIcon, FileTextIcon, FlaskConicalIcon, BookOpenIcon, ScrollTextIcon, UsersIcon } from "lucide-react"
-import Link from "next/link"
-import { blogData, simulationsData, derivationsData, devlogsData, usersData } from "@/app/admin/data"
+    Card,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+import {
+    BookOpenIcon,
+    ScrollTextIcon,
+    UsersIcon
+} from "lucide-react";
+import Link from "next/link";
 
 const stats = [
-  {
-    label: "Simulations",
-    icon: <FlaskConicalIcon className="size-3.5" />,
-    data: simulationsData,
-    href: "/admin/simulations",
-    footnote: "Interactive physics demos",
-    renderer: "Canvas / WebGL",
-  },
   {
     label: "Derivations",
     icon: <BookOpenIcon className="size-3.5" />,
@@ -46,14 +40,14 @@ const stats = [
     footnote: "Registered accounts",
     renderer: "Clerk",
   },
-]
+];
 
 export function AdminSectionCards() {
   return (
     <div className="grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-linear-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @3xl/main:grid-cols-3 @5xl/main:grid-cols-5 dark:*:data-[slot=card]:bg-card">
       {stats.map(({ label, icon, data, href, footnote, renderer }) => {
-        const published = data.filter((d) => d.status === "Done").length
-        const drafts = data.filter((d) => d.status === "In Process").length
+        const published = data.filter((d) => d.status === "Done").length;
+        const drafts = data.filter((d) => d.status === "In Process").length;
         return (
           <Link key={label} href={href} className="block group">
             <Card className="@container/card h-full transition-colors hover:border-primary/40">
@@ -69,12 +63,14 @@ export function AdminSectionCards() {
                 <div className="line-clamp-1 flex gap-2 font-medium">
                   {drafts > 0 ? `${drafts} in draft` : "All published"}
                 </div>
-                <div className="text-muted-foreground">{footnote} · {renderer}</div>
+                <div className="text-muted-foreground">
+                  {footnote} · {renderer}
+                </div>
               </CardFooter>
             </Card>
           </Link>
-        )
+        );
       })}
     </div>
-  )
+  );
 }
