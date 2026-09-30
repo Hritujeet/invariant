@@ -135,27 +135,6 @@ export function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
               </>
             )}
 
-            {/* Devlogs specific */}
-            {item.type === "Devlog" && (
-              <>
-                <div className="flex flex-col gap-3">
-                  <Label htmlFor="slug">Slug</Label>
-                  <Input id="slug" defaultValue={item.slug} />
-                </div>
-                <div className="flex flex-col gap-3">
-                  <Label htmlFor="description">Description</Label>
-                  <Textarea id="description" defaultValue={item.description} />
-                </div>
-                <div className="flex flex-col gap-3">
-                  <Label htmlFor="content">Content</Label>
-                  <Textarea id="content" defaultValue={item.content} />
-                </div>
-                <div className="flex flex-col gap-3">
-                  <Label htmlFor="images">Images ({item.images?.length || 0})</Label>
-                  <Input id="images" defaultValue={item.images?.join(", ")} />
-                </div>
-              </>
-            )}
 
             {/* Simulations specific */}
             {item.type === "Simulation" && (
