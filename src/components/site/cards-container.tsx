@@ -3,13 +3,15 @@
 import { motion } from "motion/react";
 import { DerivationsCard } from "./derivations-card";
 import SimulationsCard from "./simulations-card";
-import TechCard from "./tech-card";
 import { ScrollReveal } from "../ui/scroll-reveal";
+import { derivations, simulations } from "@/lib/site-data";
 
-type CardType = "Simulations" | "Tech" | "Derivations";
+type CardType = "Simulations" | "Derivations";
 
 type Props = {
   type: CardType;
+  /** Max items to show. Defaults to 3 for homepage previews. */
+  limit?: number;
 };
 
 const typeMeta: Record<CardType, { label: string; description: string }> = {
@@ -23,14 +25,8 @@ const typeMeta: Record<CardType, { label: string; description: string }> = {
     description:
       "Writeups of problems I actually worked — scans, algebra, the messy bits.",
   },
-  Tech: {
-    label: "lab_03 // systems",
-    description:
-      "Projects I built. What the stack was, what broke, and the repo when there is one.",
-  },
 };
 
-// Cards stagger in one by one
 const gridVariants = {
   hidden: {},
   visible: {
@@ -57,22 +53,23 @@ const itemVariants = {
   },
 };
 
-const CardContainer = ({ type }: Props) => {
+const CardContainer = ({ type, limit = 3 }: Props) => {
   const meta = typeMeta[type];
+  const derivationItems = derivations.slice(0, limit);
+  const simulationItems = simulations.slice(0, limit);
 
   return (
     <section className="simulations-container mx-auto">
-      {/* Header — simple scroll reveal */}
-      {/* Only show header if it's NOT simulations, so we don't duplicate headers */}
+      {/* Header — skip for Simulations (SimulationsSection already provides it) */}
       {type !== "Simulations" && (
         <ScrollReveal>
           <div className="mx-auto max-w-2xl px-4 text-center mt-20 md:mt-28">
             <p className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase">
               {meta.label}
             </p>
-            <h1 className="font-heading mt-3 text-3xl font-black tracking-tight leading-tight md:text-4xl">
+            <h2 className="font-heading mt-3 text-3xl font-black tracking-tight leading-tight md:text-4xl">
               Explore {type}
-            </h1>
+            </h2>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
               {meta.description}
             </p>
@@ -80,28 +77,26 @@ const CardContainer = ({ type }: Props) => {
         </ScrollReveal>
       )}
 
-      {/* Cards — stagger each card individually */}
       <motion.div
-        className="grid max-w-6xl grid-cols-1 gap-4 px-4 py-10 sm:grid-cols-2 lg:grid-cols-3 mx-auto auto-rows-fr"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl gap-4 px-4 py-10 mx-auto auto-rows-fr"
         variants={gridVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-8%" }}
       >
-        {type === "Simulations" && (
-          <>
-            <motion.div variants={itemVariants} className="h-full"><SimulationsCard /></motion.div>
-            <motion.div variants={itemVariants} className="h-full"><SimulationsCard /></motion.div>
-            <motion.div variants={itemVariants} className="h-full"><SimulationsCard /></motion.div>
-          </>
-        )}
-        {type === "Derivations" && (
-          <>
-            <motion.div variants={itemVariants} className="col-span-full h-full"><DerivationsCard /></motion.div>
-            <motion.div variants={itemVariants} className="col-span-full h-full"><DerivationsCard /></motion.div>
-            <motion.div variants={itemVariants} className="col-span-full h-full"><DerivationsCard /></motion.div>
-          </>
-        )}
+        {type === "Simulations" &&
+          simulationItems.map((sim) => (
+            <motion.div key={sim.id} variants={itemVariants} className="h-full">
+              <SimulationsCard simulation={sim} />
+            </motion.div>
+          ))}
+
+        {type === "Derivations" &&
+          derivationItems.map((d) => (
+            <motion.div key={d.id} variants={itemVariants} className="h-full">
+              <DerivationsCard derivation={d} />
+            </motion.div>
+          ))}
       </motion.div>
     </section>
   );

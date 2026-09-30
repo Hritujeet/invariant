@@ -14,8 +14,8 @@ const CTA = () => {
         </ScrollReveal>
 
         <ScrollReveal delay={0.2}>
-          <p className="mx-auto mt-4 max-w-md text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
-            Read some derivations, play with a simulation, or learn about the guy in the chair.
+          <p className="mx-auto mt-4 max-w-lg text-balance text-base leading-relaxed text-muted-foreground sm:text-lg">
+            Dive into the handwritten derivations, experiment with the interactive physics engines, or learn more about the developer behind it all.
           </p>
         </ScrollReveal>
 
@@ -39,7 +39,7 @@ const CTA = () => {
               href="/about"
               className={`group rounded-full px-6 ${buttonVariants({ variant: "ghost" })}`}
             >
-              Learn more
+              About me
               <span className="ml-2 transition-transform duration-300 group-hover:translate-x-1">
                 →
               </span>

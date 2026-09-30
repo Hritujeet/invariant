@@ -54,12 +54,6 @@ export default function Hero() {
                 <span>Explore /derivations</span>
                 <ArrowUpRight className="h-4 w-4 text-muted-foreground" />
               </Link>
-              <Link
-                href="/tech"
-                className={`px-4 py-4 ${buttonVariants({ variant: "outline" })}`}
-              >
-                <span>Systems & Tech</span>
-              </Link>
             </div>
           </ScrollReveal>
         </div>

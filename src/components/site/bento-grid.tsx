@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Binary, Code2, PenLine } from "lucide-react";
+import { ArrowUpRight, Binary, PenLine } from "lucide-react";
 import Link from "next/link";
 import { motion } from "motion/react";
 
@@ -81,7 +81,7 @@ const BentoGrid = () => {
         {/* About card */}
         <motion.article
           variants={cardVariants}
-          className={`${card} hover:border-primary/30 duration-300 hover:-translate-y-0.5 flex flex-col justify-between lg:col-span-3 lg:row-span-3 bg-muted/50 hover:bg-muted group h-full min-h-90`}
+          className={`${card} hover:border-primary/30 duration-300 hover:-translate-y-0.5 flex flex-col justify-between lg:col-span-3 lg:row-span-2 bg-muted/50 hover:bg-muted group h-full min-h-90`}
         >
           <div className="flex items-start justify-between">
             <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
@@ -189,31 +189,7 @@ const BentoGrid = () => {
           </Link>
         </motion.div>
 
-        <motion.div variants={cardVariants} className="lg:col-span-2 h-full">
-          <Link
-            href="/tech"
-            className={`${card} group bg-muted/50 hover:bg-muted flex flex-col justify-between gap-8 h-full hover:border-primary/30 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5`}
-          >
-            <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-primary/0 via-primary/0 to-primary/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            <div className="relative flex items-start justify-between gap-3">
-              <span className="flex size-9 items-center justify-center rounded-lg border border-border bg-muted/50 transition-colors group-hover:border-primary/40 group-hover:bg-primary/10">
-                <Code2 className="size-4" strokeWidth={1.75} />
-              </span>
-              <ArrowUpRight className="size-4 text-muted-foreground transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
-            </div>
-            <div className="relative">
-              <p className="font-mono text-[11px] tracking-wider text-muted-foreground uppercase">
-                /tech
-              </p>
-              <h3 className="mt-1 font-heading text-lg font-normal tracking-[-0.01em]">
-                Systems from scratch
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                From usual scripts to full stack web apps - I code it all with a nice cup of coffee.
-              </p>
-            </div>
-          </Link>
-        </motion.div>
+
       </motion.div>
     </section>
   );
