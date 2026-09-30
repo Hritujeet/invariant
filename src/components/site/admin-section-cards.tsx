@@ -1,6 +1,6 @@
 "use client";
 
-import { derivationsData, devlogsData, usersData } from "@/app/admin/data";
+import { derivationsData, usersData } from "@/app/admin/data";
 import {
     Card,
     CardDescription,
@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/card";
 import {
     BookOpenIcon,
-    ScrollTextIcon,
     UsersIcon
 } from "lucide-react";
 import Link from "next/link";
@@ -24,14 +23,7 @@ const stats = [
     footnote: "Handwritten + typeset notes",
     renderer: "LaTeX / PDF",
   },
-  {
-    label: "Devlogs",
-    icon: <ScrollTextIcon className="size-3.5" />,
-    data: devlogsData,
-    href: "/admin/devlogs",
-    footnote: "Build diaries",
-    renderer: "Markdown",
-  },
+
   {
     label: "Users",
     icon: <UsersIcon className="size-3.5" />,

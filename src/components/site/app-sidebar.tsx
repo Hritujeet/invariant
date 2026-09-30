@@ -19,14 +19,12 @@ import {
 import {
   LayoutDashboardIcon,
   BookOpenIcon,
-  ScrollTextIcon,
   ExternalLinkIcon,
 } from "lucide-react"
 
 const navMain = [
   { title: "Overview",     url: "/admin",             icon: <LayoutDashboardIcon /> },
   { title: "Derivations",  url: "/admin/derivations",  icon: <BookOpenIcon />       },
-  { title: "Devlogs",      url: "/admin/devlogs",      icon: <ScrollTextIcon />     },
 ]
 
 const navSecondary = [

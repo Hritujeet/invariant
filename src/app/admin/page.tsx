@@ -6,11 +6,10 @@ import {
     ArrowRightIcon,
     BookOpenIcon,
     PlusIcon,
-    ScrollTextIcon,
     UsersIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { derivationsData, devlogsData, usersData } from "./data";
+import { derivationsData, usersData } from "./data";
 
 const sections = [
   {
@@ -21,14 +20,7 @@ const sections = [
     newHref: "/admin/derivations/new",
     btnLabel: "New Derivation",
   },
-  {
-    label: "Devlogs",
-    icon: <ScrollTextIcon className="size-4" />,
-    data: devlogsData,
-    href: "/admin/devlogs",
-    newHref: "/admin/devlogs/new",
-    btnLabel: "New Devlog",
-  },
+
   {
     label: "Users",
     icon: <UsersIcon className="size-4" />,

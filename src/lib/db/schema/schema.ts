@@ -4,9 +4,8 @@ import { pgTable } from "drizzle-orm/pg-core/table";
 
 /*
 Tables
-// 1. Devlogs
-// 2. Derivations
-// 3. Comments
+// 1. Derivations
+// 2. Comments
 */
 
 export const derivationsTable = pgTable("derivation", {
@@ -21,24 +20,11 @@ export const derivationsTable = pgTable("derivation", {
     updatedAt: timestamp("updated_at").defaultNow().notNull().$onUpdate(() => new Date()),
 })
 
-export const devlogs = pgTable("devlogs", {
-    id: uuid("id").primaryKey().unique().notNull(),
-    title: varchar("title", { length: 255 }).notNull(),
-    slug: varchar("slug", { length: 400 }).notNull().unique(),
-    description: varchar("description", { length: 500 }).notNull(),
-    content: text("content").notNull(),
-    images: varchar("images", { length: 500 }).array().notNull(),
-    createdAt: timestamp("created_at").defaultNow().notNull(),
-    updatedAt: timestamp("updated_at").defaultNow().notNull().$onUpdate(() => new Date()),
-})
-
-
 export const commentTable = pgTable("comment", {
     id: uuid().notNull().unique().primaryKey(),
     comment: text("comment").notNull(),
     clerkUserId: text("clerk_user_id").notNull(),
     derivationId: uuid("derivation_id").references(() => derivationsTable.id),
-    devlogId: uuid("devlog_id").references(() => devlogs.id),
     isReply: boolean("is_reply").default(false).notNull(),
     replyTo: uuid("reply_to").references((): AnyPgColumn => commentTable.id),
     createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -49,18 +35,10 @@ export const derivationRelations = relations(derivationsTable, ({ many }) => ({
     comments: many(commentTable),
 }))
 
-export const devlogRelations = relations(devlogs, ({ many }) => ({
-    comments: many(commentTable),
-}))
-
 export const commentRelations = relations(commentTable, ({ one, many }) => ({
     derivation: one(derivationsTable, {
         fields: [commentTable.derivationId],
         references: [derivationsTable.id],
-    }),
-    devlog: one(devlogs, {
-        fields: [commentTable.devlogId],
-        references: [devlogs.id],
     }),
     parentComment: one(commentTable, {
         fields: [commentTable.replyTo],
