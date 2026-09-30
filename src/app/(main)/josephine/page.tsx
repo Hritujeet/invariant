@@ -87,10 +87,10 @@ const MODULES = [
     subtitle: "The operational modules Josephine uses to carry out commands and daily workflows.",
     points: [
       ["System operations", "Opens apps, manages workspace layouts, and runs 'Deep Work' scripts."],
-      ["Knowledge retrieval", "Fetches Wikipedia summaries and arXiv papers."],
+      ["Knowledge retrieval", "Fetches Wikipedia summaries and web search results."],
       ["Network watchdog", "Polls the connection when a heavy task is queued while offline."],
     ],
-    libraries: ["subprocess", "os", "psutil", "wikipedia-api", "arxiv", "requests / aiohttp"],
+    libraries: ["subprocess", "os", "psutil", "wikipedia-api", "requests / aiohttp"],
   },
 ];
 
