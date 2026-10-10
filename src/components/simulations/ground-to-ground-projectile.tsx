@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const g = 9.81;
 
@@ -9,6 +9,7 @@ export default function GroundToGroundProjectileSimulation() {
   const [angle, setAngle] = useState(45);
   const [progress, setProgress] = useState(0);
   const [running, setRunning] = useState(false);
+  const progressRef = useRef(0);
   const radians = (angle * Math.PI) / 180;
   const flightTime = (2 * speed * Math.sin(radians)) / g;
   const range = (speed * speed * Math.sin(2 * radians)) / g;
@@ -25,20 +26,26 @@ export default function GroundToGroundProjectileSimulation() {
 
   useEffect(() => {
     if (!running) return;
-    const timer = window.setInterval(() => {
-      setProgress((value) => {
-        if (value >= 1) {
-          setRunning(false);
-          return 1;
-        }
-        return Math.min(1, value + 0.012);
-      });
-    }, 30);
-    return () => window.clearInterval(timer);
+    let frame = 0;
+    let lastTime = 0;
+    const animate = (time: number) => {
+      const dt = lastTime === 0 ? 0 : Math.min((time - lastTime) / 1000, 0.05);
+      lastTime = time;
+      progressRef.current = Math.min(1, progressRef.current + dt / 2.6);
+      setProgress(progressRef.current);
+      if (progressRef.current >= 1) {
+        setRunning(false);
+        return;
+      }
+      frame = requestAnimationFrame(animate);
+    };
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
   }, [running]);
 
   const reset = () => {
     setRunning(false);
+    progressRef.current = 0;
     setProgress(0);
   };
   const x = range * progress;
@@ -46,15 +53,15 @@ export default function GroundToGroundProjectileSimulation() {
   const y = speed * Math.sin(radians) * t - 0.5 * g * t * t;
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+    <div className="min-w-0 space-y-4">
+      <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
         <span>Level-ground trajectory</span>
         <div className="flex gap-2">
           <button className="rounded-full border border-border px-3 py-1 normal-case" onClick={reset}>Reset</button>
-          <button className="rounded-full border border-primary bg-primary px-3 py-1 normal-case text-primary-foreground" onClick={() => { if (progress >= 1) setProgress(0); setRunning((value) => !value); }}>{running ? "Pause" : "Launch"}</button>
+          <button className="rounded-full border border-primary bg-primary px-3 py-1 normal-case text-primary-foreground" onClick={() => { if (progressRef.current >= 1) reset(); setRunning((value) => !value); }}>{running ? "Pause" : "Launch"}</button>
         </div>
       </div>
-      <svg viewBox="0 0 480 270" className="w-full rounded-xl border border-border bg-muted/20">
+      <svg viewBox="0 0 480 270" preserveAspectRatio="xMidYMid meet" className="block aspect-[16/9] h-auto w-full rounded-xl border border-border bg-muted/20">
         <path d="M45 235 H435" stroke="hsl(var(--border))" strokeWidth="2" />
         <polyline points={points} fill="none" stroke="hsl(var(--primary))" strokeWidth="3" strokeLinejoin="round" />
         <circle cx={60 + x * scaleX} cy={235 - y * scaleY} r="8" fill="hsl(var(--primary))" />
@@ -63,7 +70,7 @@ export default function GroundToGroundProjectileSimulation() {
         <text x="386" y="257" fill="currentColor" fontSize="11" fontFamily="monospace">landing</text>
         <text x="250" y="30" fill="currentColor" fontSize="12" fontFamily="monospace">R = {range.toFixed(1)} m</text>
       </svg>
-      <div className="grid grid-cols-3 gap-2 font-mono text-xs">
+      <div className="grid grid-cols-1 gap-2 font-mono text-xs sm:grid-cols-3">
         <div className="rounded-lg border border-border p-2 text-center"><span className="block text-muted-foreground">Flight</span><strong>{flightTime.toFixed(2)} s</strong></div>
         <div className="rounded-lg border border-border p-2 text-center"><span className="block text-muted-foreground">Max height</span><strong>{maxHeight.toFixed(2)} m</strong></div>
         <div className="rounded-lg border border-border p-2 text-center"><span className="block text-muted-foreground">Range</span><strong>{range.toFixed(2)} m</strong></div>

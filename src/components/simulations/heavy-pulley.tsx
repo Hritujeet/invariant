@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const g = 9.81;
 
@@ -11,6 +11,8 @@ export default function HeavyPulleySimulation() {
   const [position, setPosition] = useState(0);
   const [velocity, setVelocity] = useState(0);
   const [running, setRunning] = useState(false);
+  const positionRef = useRef(0);
+  const velocityRef = useRef(0);
   const inertia = 0.5 * pulleyMass;
   const acceleration = ((m2 - m1) * g) / (m1 + m2 + inertia);
   const tension1 = m1 * (g + acceleration);
@@ -18,39 +20,44 @@ export default function HeavyPulleySimulation() {
 
   useEffect(() => {
     if (!running) return;
-    const timer = window.setInterval(() => {
-      setVelocity((v) => {
-        const next = v + acceleration * 0.03;
-        setPosition((x) => {
-          const nextPosition = x + next * 0.03;
-          if (Math.abs(nextPosition) >= 1.2) {
-            setRunning(false);
-            return Math.sign(nextPosition) * 1.2;
-          }
-          return nextPosition;
-        });
-        return next;
-      });
-    }, 30);
-    return () => window.clearInterval(timer);
+    let frame = 0;
+    let lastTime = 0;
+    const animate = (time: number) => {
+      const dt = lastTime === 0 ? 0 : Math.min((time - lastTime) / 1000, 0.05);
+      lastTime = time;
+      velocityRef.current += acceleration * dt;
+      positionRef.current += velocityRef.current * dt;
+      if (Math.abs(positionRef.current) >= 1.2) {
+        positionRef.current = Math.sign(positionRef.current) * 1.2;
+        setRunning(false);
+      }
+      setVelocity(velocityRef.current);
+      setPosition(positionRef.current);
+      if (Math.abs(positionRef.current) >= 1.2) return;
+      frame = requestAnimationFrame(animate);
+    };
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
   }, [acceleration, running]);
 
   const reset = () => {
     setRunning(false);
+    positionRef.current = 0;
+    velocityRef.current = 0;
     setPosition(0);
     setVelocity(0);
   };
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+    <div className="min-w-0 space-y-4">
+      <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
         <span>Atwood machine with a solid-disk pulley</span>
         <div className="flex gap-2">
           <button className="rounded-full border border-border px-3 py-1 normal-case" onClick={reset}>Reset</button>
           <button className="rounded-full border border-primary bg-primary px-3 py-1 normal-case text-primary-foreground" onClick={() => setRunning((value) => !value)}>{running ? "Pause" : "Release"}</button>
         </div>
       </div>
-      <svg viewBox="0 0 480 300" className="w-full rounded-xl border border-border bg-muted/20">
+      <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet" className="block aspect-[8/5] h-auto w-full rounded-xl border border-border bg-muted/20">
         <circle cx="240" cy="75" r="37" fill="hsl(var(--muted))" stroke="hsl(var(--primary))" strokeWidth="3" />
         <circle cx="240" cy="75" r="5" fill="hsl(var(--primary))" />
         <path d={`M203 75 V${198 - position * 55} H155 V${198 - position * 55} M277 75 V${198 + position * 55} H325 V${198 + position * 55}`} fill="none" stroke="hsl(var(--muted-foreground))" strokeWidth="2" />

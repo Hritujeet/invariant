@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const g = 9.81;
 
@@ -11,38 +11,45 @@ export default function InclinedPlaneSimulation() {
   const [position, setPosition] = useState(0);
   const [velocity, setVelocity] = useState(0);
   const [running, setRunning] = useState(false);
+  const positionRef = useRef(0);
+  const velocityRef = useRef(0);
   const theta = (angle * Math.PI) / 180;
   const acceleration = g * (Math.sin(theta) - muKinetic * Math.cos(theta));
 
   useEffect(() => {
     if (!running) return;
-    const timer = window.setInterval(() => {
-      setVelocity((v) => {
-        const next = Math.max(0, v + acceleration * 0.03);
-        setPosition((x) => {
-          const nextPosition = x + next * 0.03;
-          if (nextPosition >= 2.5) {
-            setRunning(false);
-            return 2.5;
-          }
-          return nextPosition;
-        });
-        return next;
-      });
-    }, 30);
-    return () => window.clearInterval(timer);
+    let frame = 0;
+    let lastTime = 0;
+    const animate = (time: number) => {
+      const dt = lastTime === 0 ? 0 : Math.min((time - lastTime) / 1000, 0.05);
+      lastTime = time;
+      velocityRef.current = Math.max(0, velocityRef.current + acceleration * dt);
+      positionRef.current += velocityRef.current * dt;
+      if (positionRef.current >= 2.5) {
+        positionRef.current = 2.5;
+        setRunning(false);
+      }
+      setVelocity(velocityRef.current);
+      setPosition(positionRef.current);
+      if (positionRef.current >= 2.5) return;
+      frame = requestAnimationFrame(animate);
+    };
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
   }, [acceleration, running]);
 
   const reset = () => {
     setRunning(false);
+    positionRef.current = 0;
+    velocityRef.current = 0;
     setPosition(0);
     setVelocity(0);
   };
   const canSlide = Math.tan(theta) > muStatic;
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+    <div className="min-w-0 space-y-4">
+      <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
         <span>Block on a rough incline</span>
         <div className="flex gap-2">
           <button className="rounded-full border border-border px-3 py-1 normal-case" onClick={reset}>Reset</button>
@@ -55,7 +62,7 @@ export default function InclinedPlaneSimulation() {
           </button>
         </div>
       </div>
-      <svg viewBox="0 0 480 300" className="w-full rounded-xl border border-border bg-muted/20">
+      <svg viewBox="0 0 480 300" preserveAspectRatio="xMidYMid meet" className="block aspect-[8/5] h-auto w-full rounded-xl border border-border bg-muted/20">
         <path d="M55 260 L400 260 L400 100 Z" fill="hsl(var(--muted))" fillOpacity=".55" stroke="hsl(var(--border))" strokeWidth="2" />
         <path d="M85 245 L370 112" stroke="hsl(var(--primary))" strokeWidth="3" />
         <g transform={`translate(${-position * 66} ${position * 31}) rotate(-${angle}, 300, 145)`}>
@@ -65,7 +72,7 @@ export default function InclinedPlaneSimulation() {
         <text x="92" y="232" fill="currentColor" fontSize="13" fontFamily="monospace">θ = {angle}°</text>
         <text x="350" y="285" fill="currentColor" fontSize="12" fontFamily="monospace">x along slope</text>
       </svg>
-      <div className="grid grid-cols-2 gap-3 font-mono text-xs">
+      <div className="grid grid-cols-1 gap-3 font-mono text-xs sm:grid-cols-2">
         <div className="rounded-lg border border-border p-3 text-center"><span className="block text-muted-foreground">Acceleration</span><strong>{canSlide ? acceleration.toFixed(2) : "0.00"} m/s²</strong></div>
         <div className="rounded-lg border border-border p-3 text-center"><span className="block text-muted-foreground">Speed</span><strong>{velocity.toFixed(2)} m/s</strong></div>
       </div>

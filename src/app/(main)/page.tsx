@@ -2,6 +2,7 @@ import BentoGrid from "@/components/site/bento-grid";
 import CTA from "@/components/site/CTA";
 import Hero from "@/components/site/hero";
 import CardContainer from "@/components/site/cards-container";
+import HomepageSimulations from "@/components/site/homepage-simulations";
 import PhysicsSection from "@/components/site/physics-section";
 
 import { SimulationsSection } from "@/components/site/simulations-section";
@@ -16,7 +17,7 @@ export default function Home() {
       
       <div className="mt-8 md:mt-12">
         <SimulationsSection />
-        <CardContainer type="Simulations" />
+        <HomepageSimulations />
       </div>
 
       <PhysicsSection />

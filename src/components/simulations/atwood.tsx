@@ -28,8 +28,10 @@ export default function Atwood() {
 
     const resize = () => {
       const rect = wrap.getBoundingClientRect();
-      canvas.width = rect.width;
-      canvas.height = rect.height;
+      const pixelRatio = window.devicePixelRatio || 1;
+      canvas.width = Math.round(rect.width * pixelRatio);
+      canvas.height = Math.round(rect.height * pixelRatio);
+      ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     };
     const ro = new ResizeObserver(resize);
     ro.observe(wrap);
@@ -38,7 +40,7 @@ export default function Atwood() {
     let raf: number;
     const draw = (t: number) => {
       const s = state.current;
-      const dt = Math.min((t - s.last) / 1000, 0.05);
+      const dt = s.last === 0 ? 0 : Math.min((t - s.last) / 1000, 0.05);
       s.last = t;
 
       if (s.running) {
@@ -58,13 +60,13 @@ export default function Atwood() {
         });
       }
 
-      const W = canvas.width, H = canvas.height;
+      const pixelRatio = window.devicePixelRatio || 1;
+      const W = canvas.width / pixelRatio, H = canvas.height / pixelRatio;
       ctx.clearRect(0, 0, W, H);
 
       const isDark = document.documentElement.classList.contains("dark");
       const primary = isDark ? "#34d399" : "#10b981";
       const fg = isDark ? "#f4f4f5" : "#18181b";
-      const fgMuted = isDark ? "#a1a1aa" : "#71717a";
       const rope = isDark ? "#a1a1aa" : "#71717a";
       const blockBg = isDark ? "#27272a" : "#f4f4f5";
 

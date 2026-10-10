@@ -267,46 +267,6 @@ export const simulations = [
     derivationSlug: null,
   },
   {
-    id: 4,
-    slug: "spring-mass",
-    title: "Spring-Mass System",
-    label: "sim_04 // spring",
-    description:
-      "Hooke's law, damping coefficient, and driving force — all adjustable. Shows resonance when the driving frequency matches ω₀.",
-    topic: "SHM · Damping",
-    derivationSlug: "small-oscillations",
-  },
-  {
-    id: 5,
-    slug: "orbital",
-    title: "Orbital Mechanics",
-    label: "sim_05 // orbit",
-    description:
-      "Central force problem under gravity. Elliptical orbits, angular momentum conservation, and Kepler's second law visualised.",
-    topic: "Gravitation",
-    derivationSlug: "central-force-motion",
-  },
-  {
-    id: 6,
-    slug: "double-pendulum",
-    title: "Double Pendulum",
-    label: "sim_06 // chaos",
-    description:
-      "Two coupled pendulums that exhibit chaotic motion. Tiny changes in initial angle produce wildly different trajectories.",
-    topic: "Chaos · Lagrangian",
-    derivationSlug: "double-pendulum",
-  },
-  {
-    id: 7,
-    slug: "coupled-oscillators",
-    title: "Coupled Oscillators",
-    label: "sim_07 // beats",
-    description:
-      "Two masses connected by three springs. Watch normal modes emerge and observe beat frequencies from superposition.",
-    topic: "Oscillations · Modes",
-    derivationSlug: "coupled-oscillators",
-  },
-  {
     id: 8,
     slug: "inclined-plane",
     title: "Inclined Plane CRTM Simulation",
@@ -314,7 +274,7 @@ export const simulations = [
     description:
       "Block on a wedge with adjustable friction coefficient and angle. See when static friction breaks and sliding begins.",
     topic: "NLM · Friction",
-    derivationSlug: "inclined-plane-crtm",
+    derivationSlug: null,
   },
   {
     id: 9,
@@ -324,7 +284,7 @@ export const simulations = [
     description:
       "Two particles on a line with adjustable masses and velocities. Conservation of momentum and energy shown in real time.",
     topic: "Conservation Laws",
-    derivationSlug: "particle-based-collision",
+    derivationSlug: null,
   },
   {
     id: 10,
@@ -334,7 +294,7 @@ export const simulations = [
     description:
       "Set the launch speed and angle, then explore the symmetric parabolic path, flight time, maximum height, and range.",
     topic: "Kinematics",
-    derivationSlug: "ground-to-ground-projectile",
+    derivationSlug: null,
   },
   {
     id: 11,
@@ -344,7 +304,7 @@ export const simulations = [
     description:
       "Include rotational inertia in an Atwood machine and compare the tensions on either side of the pulley.",
     topic: "Rotational Dynamics",
-    derivationSlug: "heavy-pulley",
+    derivationSlug: null,
   },
 ];
 

@@ -4,7 +4,7 @@ import InclinedPlaneSimulation from "@/components/simulations/inclined-plane";
 import GroundToGroundProjectileSimulation from "@/components/simulations/ground-to-ground-projectile";
 import ParticleCollisionSimulation from "@/components/simulations/particle-collision";
 import { simulations } from "@/lib/site-data";
-import { ArrowLeft, BookOpen, Terminal } from "lucide-react";
+import { ArrowLeft, Terminal } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -34,10 +34,6 @@ export default async function SimulationDetailPage({
   if (!simulation || !isSimulationSlug(slug)) notFound();
   const Simulation = simulationComponents[slug];
 
-  const derivation = simulation.derivationSlug
-    ? `/derivations/${simulation.derivationSlug}`
-    : null;
-
   return (
     <div className="mx-auto min-h-screen max-w-5xl px-4 py-10">
       <Link
@@ -62,15 +58,6 @@ export default async function SimulationDetailPage({
       <section className="rounded-2xl border border-border bg-card/50 p-4 sm:p-6">
         <Simulation />
       </section>
-      {derivation && (
-        <Link
-          href={derivation}
-          className="mt-5 inline-flex items-center gap-2 text-sm text-primary transition-colors hover:text-primary/80"
-        >
-          <BookOpen className="size-4" />
-          Read the derivation
-        </Link>
-      )}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function ParticleCollisionSimulation() {
   const [m1, setM1] = useState(2);
@@ -9,6 +9,7 @@ export default function ParticleCollisionSimulation() {
   const [u2, setU2] = useState(-2);
   const [progress, setProgress] = useState(0);
   const [running, setRunning] = useState(false);
+  const progressRef = useRef(0);
   const closingSpeed = u1 - u2;
   const initialX1 = 100;
   const initialX2 = 400;
@@ -35,33 +36,39 @@ export default function ParticleCollisionSimulation() {
 
   useEffect(() => {
     if (!running) return;
-    const timer = window.setInterval(() => {
-      setProgress((value) => {
-        if (value >= 1) {
-          setRunning(false);
-          return 1;
-        }
-        return Math.min(1, value + 0.01);
-      });
-    }, 30);
-    return () => window.clearInterval(timer);
+    let frame = 0;
+    let lastTime = 0;
+    const animate = (time: number) => {
+      const dt = lastTime === 0 ? 0 : Math.min((time - lastTime) / 1000, 0.05);
+      lastTime = time;
+      progressRef.current = Math.min(1, progressRef.current + dt / 3);
+      setProgress(progressRef.current);
+      if (progressRef.current >= 1) {
+        setRunning(false);
+        return;
+      }
+      frame = requestAnimationFrame(animate);
+    };
+    frame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(frame);
   }, [running]);
 
   const reset = () => {
     setRunning(false);
+    progressRef.current = 0;
     setProgress(0);
   };
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+    <div className="min-w-0 space-y-4">
+      <div className="flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
         <span>One-dimensional elastic collision</span>
         <div className="flex gap-2">
           <button className="rounded-full border border-border px-3 py-1 normal-case" onClick={reset}>Reset</button>
-          <button className="rounded-full border border-primary bg-primary px-3 py-1 normal-case text-primary-foreground" onClick={() => { if (progress >= 1) setProgress(0); setRunning((value) => !value); }} disabled={closingSpeed <= 0}>{running ? "Pause" : "Run"}</button>
+          <button className="rounded-full border border-primary bg-primary px-3 py-1 normal-case text-primary-foreground" onClick={() => { if (progressRef.current >= 1) reset(); setRunning((value) => !value); }} disabled={closingSpeed <= 0}>{running ? "Pause" : "Run"}</button>
         </div>
       </div>
-      <svg viewBox="0 0 500 210" className="w-full rounded-xl border border-border bg-muted/20">
+      <svg viewBox="0 0 500 210" preserveAspectRatio="xMidYMid meet" className="block aspect-[50/21] h-auto w-full rounded-xl border border-border bg-muted/20">
         <path d="M35 145 H465" stroke="hsl(var(--border))" strokeWidth="2" />
         <circle cx={Math.max(48, Math.min(452, x1))} cy="125" r={12 + m1 * 2} fill="hsl(var(--primary))" />
         <circle cx={Math.max(48, Math.min(452, x2))} cy="125" r={12 + m2 * 2} fill="hsl(var(--muted-foreground))" />
@@ -69,7 +76,7 @@ export default function ParticleCollisionSimulation() {
         <text x={Math.max(48, Math.min(452, x2))} y="195" textAnchor="middle" fill="currentColor" fontSize="11" fontFamily="monospace">m₂ · {collided ? v2.toFixed(1) : u2.toFixed(1)} m/s</text>
       </svg>
       {closingSpeed <= 0 && <p className="text-xs text-muted-foreground">The particles are not approaching; increase u₁ or decrease u₂ to initiate a collision.</p>}
-      <div className="grid grid-cols-2 gap-2 font-mono text-xs">
+      <div className="grid grid-cols-1 gap-2 font-mono text-xs sm:grid-cols-2">
         <div className="rounded-lg border border-border p-2 text-center"><span className="block text-muted-foreground">Momentum before / after</span><strong>{momentumBefore.toFixed(2)} / {momentumAfter.toFixed(2)} kg·m/s</strong></div>
         <div className="rounded-lg border border-border p-2 text-center"><span className="block text-muted-foreground">Energy before / after</span><strong>{energyBefore.toFixed(2)} / {energyAfter.toFixed(2)} J</strong></div>
       </div>
