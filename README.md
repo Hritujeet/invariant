@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# invariant
 
-## Getting Started
+**invariant** is a physics and software website focused on classical mechanics. It combines interactive browser-based simulations with written derivations and supporting site pages.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Interactive simulations for the Atwood machine, inclined plane, ground-to-ground projectile motion, heavy pulley, and particle collision.
+- Derivation listings and individual derivation pages.
+- Sign-in and sign-up pages powered by Clerk.
+- About, contact, profile, and admin areas.
+- Responsive UI with light/dark theme support.
+
+## Tech stack
+
+- Next.js App Router and React
+- TypeScript
+- Tailwind CSS
+- Clerk authentication
+- PostgreSQL with Drizzle ORM
+- Motion and Lucide icons
+
+## Requirements
+
+- Node.js (use a current LTS release)
+- npm
+- A Clerk application for authentication
+- A PostgreSQL database for database-backed features
+
+## Getting started
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Create a `.env.local` file in the project root and configure the environment variables described below.
+
+3. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Visit [http://localhost:3000](http://localhost:3000).
+
+## Environment variables
+
+Configure these values in `.env.local`. Get the Clerk keys from your Clerk application dashboard and the database URL from your PostgreSQL provider.
+
+```dotenv
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your-clerk-publishable-key
+CLERK_SECRET_KEY=your-clerk-secret-key
+DATABASE_URL=postgresql://user:password@host:5432/database
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Keep secret keys out of source control. The database connection is configured in `src/lib/db/index.ts`; the Drizzle schema is in `src/lib/db/schema/`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```text
+src/
+  app/
+    (auth)/              Clerk sign-in and sign-up pages
+    (main)/              Public site pages and dynamic content routes
+    admin/               Admin pages
+  components/
+    derivations/         Individual derivation writeups
+    simulations/         Interactive simulation implementations
+    site/                Shared site sections, cards, and layouts
+    ui/                  Reusable UI components
+  lib/
+    db/                  Database connection and Drizzle schema
+    site-data.ts         Public derivation and simulation catalog
+```
 
-## Learn More
+The public catalog is maintained in `src/lib/site-data.ts`. Simulation components are in `src/components/simulations/`, and their slug-based pages are under `src/app/(main)/simulations/`. Derivation writeups and pages follow the same pattern.
 
-To learn more about Next.js, take a look at the following resources:
+## Available scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the local development server |
+| `npm run build` | Create a production build |
+| `npm run start` | Run the production server after building |
+| `npm run lint` | Run ESLint |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Database
 
-## Deploy on Vercel
+Database schema and Drizzle Kit configuration are provided in `src/lib/db/schema/` and `drizzle.config.ts`. Drizzle Kit reads `DATABASE_URL` from the environment. Use the project’s configured Drizzle Kit commands to generate or apply migrations when changing database-backed schema.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploy as a Next.js application. Configure the Clerk keys and `DATABASE_URL` in the deployment environment, then build with `npm run build` and serve with `npm run start` or the hosting provider’s Next.js runtime.
