@@ -181,6 +181,58 @@ export const derivations = [
     simulationSlug: null,
     createdAt: "2025-03-22",
   },
+  {
+    id: 16,
+    slug: "inclined-plane-crtm",
+    title: "Inclined Plane: Constrained Motion",
+    expressionDisplay: "a = g(sin θ − μₖ cos θ)",
+    description:
+      "Resolve gravity and the normal force along a rough incline, then apply the static-friction threshold to determine whether the block moves.",
+    pages: 4,
+    isDigital: true,
+    topic: "Newtonian Mechanics",
+    simulationSlug: "inclined-plane",
+    createdAt: "2026-10-10",
+  },
+  {
+    id: 17,
+    slug: "ground-to-ground-projectile",
+    title: "Ground-to-Ground Projectile",
+    expressionDisplay: "R = (u² sin 2θ) / g",
+    description:
+      "Derive flight time, maximum height, and range for a projectile launched and landing at the same elevation.",
+    pages: 3,
+    isDigital: true,
+    topic: "Kinematics",
+    simulationSlug: "ground-to-ground-projectile",
+    createdAt: "2026-10-10",
+  },
+  {
+    id: 18,
+    slug: "heavy-pulley",
+    title: "The Heavy Pulley",
+    expressionDisplay: "a = (m₂ − m₁)g / (m₁ + m₂ + I/R²)",
+    description:
+      "Account for a pulley’s rotational inertia to derive the unequal tensions and acceleration of a two-mass system.",
+    pages: 4,
+    isDigital: true,
+    topic: "Rotational Dynamics",
+    simulationSlug: "heavy-pulley",
+    createdAt: "2026-10-10",
+  },
+  {
+    id: 19,
+    slug: "particle-based-collision",
+    title: "Particle-Based Collision",
+    expressionDisplay: "v₁ = [(m₁−m₂)u₁ + 2m₂u₂] / (m₁+m₂)",
+    description:
+      "Use conservation of momentum and kinetic energy to derive the outgoing velocities in a one-dimensional elastic collision.",
+    pages: 4,
+    isDigital: true,
+    topic: "Conservation Laws",
+    simulationSlug: "particle-collision",
+    createdAt: "2026-10-10",
+  },
 ];
 
 export const simulations = [
@@ -257,22 +309,42 @@ export const simulations = [
   {
     id: 8,
     slug: "inclined-plane",
-    title: "Inclined Plane with Friction",
+    title: "Inclined Plane CRTM Simulation",
     label: "sim_08 // incline",
     description:
       "Block on a wedge with adjustable friction coefficient and angle. See when static friction breaks and sliding begins.",
     topic: "NLM · Friction",
-    derivationSlug: null,
+    derivationSlug: "inclined-plane-crtm",
   },
   {
     id: 9,
-    slug: "collisions",
-    title: "1D Elastic Collisions",
-    label: "sim_09 // collisions",
+    slug: "particle-collision",
+    title: "Particle-Based Collision Simulation",
+    label: "sim_09 // particles",
     description:
       "Two particles on a line with adjustable masses and velocities. Conservation of momentum and energy shown in real time.",
     topic: "Conservation Laws",
-    derivationSlug: null,
+    derivationSlug: "particle-based-collision",
+  },
+  {
+    id: 10,
+    slug: "ground-to-ground-projectile",
+    title: "Ground-to-Ground Projectile Simulation",
+    label: "sim_10 // projectile",
+    description:
+      "Set the launch speed and angle, then explore the symmetric parabolic path, flight time, maximum height, and range.",
+    topic: "Kinematics",
+    derivationSlug: "ground-to-ground-projectile",
+  },
+  {
+    id: 11,
+    slug: "heavy-pulley",
+    title: "The Heavy Pulley Simulation",
+    label: "sim_11 // rotation",
+    description:
+      "Include rotational inertia in an Atwood machine and compare the tensions on either side of the pulley.",
+    topic: "Rotational Dynamics",
+    derivationSlug: "heavy-pulley",
   },
 ];
 

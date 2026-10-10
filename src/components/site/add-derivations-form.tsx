@@ -45,7 +45,7 @@ export const AddDerivationsForm = () => {
 
           <Field>
             <Label htmlFor="content">Full Content</Label>
-            <Textarea placeholder="Detailed write-up..." id="content" name="content" className="min-h-[150px]" required />
+            <Textarea placeholder="Detailed write-up..." id="content" name="content" className="min-h-37.5" required />
           </Field>
 
           <Field className="bg-muted/30 p-4 rounded-lg border border-dashed border-border/60">

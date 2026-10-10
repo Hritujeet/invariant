@@ -1,14 +1,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import type { Simulation } from "@/lib/site-data";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import Link from "next/link";
 
 const SimulationsCard = ({ simulation }: { simulation: Simulation }) => {
   return (
-    <Card
-      className="group relative h-full bg-card/50 flex flex-col overflow-hidden transition-all duration-300 hover:border-primary/50 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/5"
-    >
+    <Link href={`/simulations/${simulation.slug}`} className="group block h-full">
+    <Card className="relative h-full bg-card/50 flex flex-col overflow-hidden transition-all duration-300 group-hover:border-primary/50 group-hover:-translate-y-0.5 group-hover:shadow-lg group-hover:shadow-primary/5">
       <div className="flex flex-col h-full">
         {/* Visual header */}
         <CardHeader className="pb-0">
@@ -76,17 +74,15 @@ const SimulationsCard = ({ simulation }: { simulation: Simulation }) => {
               )}
               {!simulation.derivationSlug && simulation.topic}
             </span>
-            <Link
-              href={`/simulations/${simulation.slug}`}
-              className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground transition-colors group-hover:text-primary"
-            >
+            <span className="inline-flex items-center gap-1 text-xs font-medium text-muted-foreground transition-colors group-hover:text-primary">
               Run
               <ArrowUpRight className="size-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </Link>
+            </span>
           </div>
         </CardContent>
       </div>
     </Card>
+    </Link>
   );
 };
 

@@ -12,6 +12,8 @@ import { ArrowUpRight, FileText, Zap } from "lucide-react";
 import Link from "next/link";
 
 export function DerivationsCard({ derivation }: { derivation: Derivation }) {
+  const isDigital = "isDigital" in derivation && derivation.isDigital;
+
   return (
     <Link
       href={`/derivations/${derivation.slug}`}
@@ -53,7 +55,7 @@ export function DerivationsCard({ derivation }: { derivation: Derivation }) {
         <CardFooter className="mt-auto flex items-center justify-between font-mono text-[11px] text-muted-foreground pt-0">
           <span className="flex items-center gap-1.5">
             <FileText className="size-3" />
-            {derivation.pages} pages · Handwritten
+            {derivation.pages} {isDigital ? "steps · Digital" : "pages · Handwritten"}
           </span>
           <span className="inline-flex items-center gap-1 transition-colors group-hover:text-primary">
             Read notes

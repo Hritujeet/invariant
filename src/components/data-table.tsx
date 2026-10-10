@@ -165,7 +165,7 @@ const columns = columnHelper.columns([
     id: "target",
     header: "Target / Slug",
     cell: ({ row }) => (
-      <span className="font-mono text-xs text-muted-foreground truncate max-w-[140px] block">
+      <span className="font-mono text-xs text-muted-foreground truncate max-w-35 block">
         {row.getValue("target")}
       </span>
     ),
@@ -174,7 +174,7 @@ const columns = columnHelper.columns([
     id: "info",
     header: "Info",
     cell: ({ row }) => (
-      <span className="text-xs text-muted-foreground truncate max-w-[160px] block">
+      <span className="text-xs text-muted-foreground truncate max-w-40 block">
         {row.getValue("info")}
       </span>
     ),
@@ -183,7 +183,7 @@ const columns = columnHelper.columns([
     id: "details",
     header: "Details",
     cell: ({ row }) => (
-      <span className="text-xs text-muted-foreground truncate max-w-[180px] block">
+      <span className="text-xs text-muted-foreground truncate max-w-45 block">
         {row.getValue("details")}
       </span>
     ),
