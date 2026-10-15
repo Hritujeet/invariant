@@ -9,7 +9,7 @@ import { buttonVariants } from "../ui/button";
 const links = [
   { href: "/simulations", label: "simulations", flagship: true },
   { href: "/derivations", label: "derivations" },
-  { href: "/research", label: "research folio" },
+  { href: "/research", label: "papers & workings" },
 ];
 
 const Navbar = () => {
