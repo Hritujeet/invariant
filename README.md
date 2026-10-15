@@ -6,7 +6,7 @@
 
 - Interactive simulations for the Atwood machine, inclined plane, ground-to-ground projectile motion, heavy pulley, and particle collision.
 - Derivation listings and individual derivation pages.
-- Sign-in and sign-up pages powered by Clerk.
+- Placeholder sign-in and sign-up pages; authentication is not configured.
 - About, contact, profile, and admin areas.
 - Responsive UI with light/dark theme support.
 
@@ -15,7 +15,7 @@
 - Next.js App Router and React
 - TypeScript
 - Tailwind CSS
-- Clerk authentication
+- Authentication is not currently configured.
 - PostgreSQL with Drizzle ORM
 - Motion and Lucide icons
 
@@ -23,7 +23,6 @@
 
 - Node.js (use a current LTS release)
 - npm
-- A Clerk application for authentication
 - A PostgreSQL database for database-backed features
 
 ## Getting started
@@ -46,11 +45,9 @@
 
 ## Environment variables
 
-Configure these values in `.env.local`. Get the Clerk keys from your Clerk application dashboard and the database URL from your PostgreSQL provider.
+Configure the database URL in `.env.local`.
 
 ```dotenv
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your-clerk-publishable-key
-CLERK_SECRET_KEY=your-clerk-secret-key
 DATABASE_URL=postgresql://user:password@host:5432/database
 ```
 
@@ -61,7 +58,7 @@ Keep secret keys out of source control. The database connection is configured in
 ```text
 src/
   app/
-    (auth)/              Clerk sign-in and sign-up pages
+    (auth)/              Placeholder sign-in and sign-up pages
     (main)/              Public site pages and dynamic content routes
     admin/               Admin pages
   components/
@@ -91,4 +88,4 @@ Database schema and Drizzle Kit configuration are provided in `src/lib/db/schema
 
 ## Deployment
 
-Deploy as a Next.js application. Configure the Clerk keys and `DATABASE_URL` in the deployment environment, then build with `npm run build` and serve with `npm run start` or the hosting provider’s Next.js runtime.
+Deploy as a Next.js application. Configure `DATABASE_URL` in the deployment environment, then build with `npm run build` and serve with `npm run start` or the hosting provider’s Next.js runtime. Authentication is currently unconfigured; the sign-in and sign-up routes are placeholders.

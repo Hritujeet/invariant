@@ -1,11 +1,15 @@
 "use client"
 
 import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
+import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
 } from "@/components/ui/sidebar"
-import { UserButton } from "@clerk/nextjs"
 
 export function NavUser({
   user,
@@ -19,17 +23,15 @@ export function NavUser({
   return (
     <SidebarMenu>
       <SidebarMenuItem>
-        <SidebarMenuButton size="lg" className="hover:bg-transparent aria-expanded:bg-transparent">
-          <UserButton
-            showName
-            appearance={{
-              elements: {
-                rootBox: "w-full",
-                userButtonTrigger: "w-full flex-row-reverse justify-between hover:bg-muted rounded-lg transition-colors p-1.5",
-                userButtonOuterIdentifier: "text-sm font-medium text-foreground mr-auto ml-0",
-              }
-            }}
-          />
+        <SidebarMenuButton size="lg" className="cursor-default hover:bg-transparent">
+          <Avatar>
+            <AvatarImage src={user.avatar} alt="" />
+            <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+          </Avatar>
+          <span className="grid min-w-0 flex-1 text-left text-sm leading-tight">
+            <span className="truncate font-medium">{user.name}</span>
+            <span className="truncate text-xs text-muted-foreground">{user.email}</span>
+          </span>
         </SidebarMenuButton>
       </SidebarMenuItem>
     </SidebarMenu>

@@ -20,7 +20,7 @@ export const blogData = [
     title: "Tech Stack 2024: What I'm using and why",
     img: "/images/blog/tech-stack-2024.jpg",
     content:
-      "Next.js, Drizzle, Clerk, shadcn — here's the full stack and the reasoning...",
+      "Next.js, Drizzle, shadcn — here's the full stack and the reasoning...",
     views: 980,
     createdAt: "2024-05-02",
     updatedAt: "2024-05-02",
@@ -113,8 +113,8 @@ export const blogData = [
     id: 10,
     type: "Blog",
     status: "Draft",
-    title: "Clerk vs NextAuth: A Real Comparison",
-    img: "/images/blog/clerk-nextauth.jpg",
+    title: "Authentication Options for Next.js",
+    img: "/images/blog/authentication-options.jpg",
     content:
       "Comparing authentication strategies for Next.js App Router projects...",
     views: 0,

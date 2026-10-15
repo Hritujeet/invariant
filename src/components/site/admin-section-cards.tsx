@@ -30,7 +30,7 @@ const stats = [
     data: usersData,
     href: "/admin/users",
     footnote: "Registered accounts",
-    renderer: "Clerk",
+    renderer: "Not configured",
   },
 ];
 

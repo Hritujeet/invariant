@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { useUser } from "@clerk/nextjs"
 
 import { NavMain } from "@/components/nav-main"
 import { NavSecondary } from "@/components/nav-secondary"
@@ -32,12 +31,10 @@ const navSecondary = [
 ]
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { user } = useUser()
-
-  const clerkUser = {
-    name: user?.fullName ?? user?.username ?? "Admin",
-    email: user?.primaryEmailAddress?.emailAddress ?? "",
-    avatar: user?.imageUrl ?? "",
+  const previewUser = {
+    name: "Admin",
+    email: "Local preview",
+    avatar: "",
   }
 
   return (
@@ -65,7 +62,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarContent>
 
       <SidebarFooter>
-        <NavUser user={clerkUser} />
+        <NavUser user={previewUser} />
       </SidebarFooter>
     </Sidebar>
   )

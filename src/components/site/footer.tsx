@@ -5,6 +5,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/simulations", label: "Simulations" },
   { href: "/derivations", label: "Derivations" },
+  { href: "/research", label: "Research Folio" },
 ];
 
 export function Footer() {

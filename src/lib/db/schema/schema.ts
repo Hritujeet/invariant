@@ -23,7 +23,7 @@ export const derivationsTable = pgTable("derivation", {
 export const commentTable = pgTable("comment", {
     id: uuid().notNull().unique().primaryKey(),
     comment: text("comment").notNull(),
-    clerkUserId: text("clerk_user_id").notNull(),
+    authorId: text("author_id").notNull(),
     derivationId: uuid("derivation_id").references(() => derivationsTable.id),
     isReply: boolean("is_reply").default(false).notNull(),
     replyTo: uuid("reply_to").references((): AnyPgColumn => commentTable.id),
